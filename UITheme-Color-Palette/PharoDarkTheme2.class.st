@@ -58,27 +58,6 @@ PharoDarkTheme2 class >> veryLightSelectionColor [
 	^ self lightSelectionColor muchLighter
 ]
 
-{ #category : #'accessing - colors' }
-PharoDarkTheme2 >> backgroundColor [
-	^ Color r: 0.130 g: 0.130 b: 0.130
-]
-
-{ #category : #'accessing - colors' }
-PharoDarkTheme2 >> balloonBackgroundColor [
-
-	^ self darkBaseColor lighter
-]
-
-{ #category : #'accessing - colors' }
-PharoDarkTheme2 >> borderColor [ 
-	^ Color darkGray darker darker darker
-]
-
-{ #category : #'accessing - colors' }
-PharoDarkTheme2 >> buttonColor [
-	^ self backgroundColor lighter lighter
-]
-
 { #category : #'fill-styles - buttons' }
 PharoDarkTheme2 >> buttonDisabledBorderStyleFor: aButton [
 
@@ -128,16 +107,6 @@ PharoDarkTheme2 >> buttonSelectedFillStyleFor: aButton [
 
 	self flag: 'not returning an object color'.
 	^ SolidFillStyle color: self selectionColor
-]
-
-{ #category : #'accessing - colors' }
-PharoDarkTheme2 >> caretColor [
-	^ Color lightBlue
-]
-
-{ #category : #'accessing - colors' }
-PharoDarkTheme2 >> classExtensionColor [
-	^ Color gray lighter lighter
 ]
 
 { #category : #initialization }
@@ -206,54 +175,6 @@ PharoDarkTheme2 >> controlButtonNormalFillStyleFor: aButton [
 	^ self buttonNormalFillStyleFor: aButton
 ]
 
-{ #category : #'accessing - colors' }
-PharoDarkTheme2 >> dangerTextColor [
-	^ Color 
-		r: 239	
-		g: 83	
-		b: 80	
-		range: 255
-]
-
-{ #category : #'fill-styles' }
-PharoDarkTheme2 >> desktopColor [
-
-	^ Color darkGray darker
-]
-
-{ #category : #'basic-colors - diffs' }
-PharoDarkTheme2 >> diffAdditionalLineBackgroundColor [
-	"Answer the color used to highlight additional text lines in a diff view."
-	
-	^ Color r: 0.0 g: 0.76 b: 0.0 alpha: 0.2
-]
-
-{ #category : #'basic-colors - diffs' }
-PharoDarkTheme2 >> diffEdgeColor [
-	"Answer the color used to show the border of the changes."
-	
-	^ Color white alpha: 0.5
-]
-
-{ #category : #'basic-colors - diffs' }
-PharoDarkTheme2 >> diffModificatedLineBackgroundColor [
-	"Answer the color used to highlight changed text lines in a diff view."
-	
-	^ Color gray alpha: 0.2
-]
-
-{ #category : #'basic-colors - diffs' }
-PharoDarkTheme2 >> diffRemovedLinesBackgroundColor [
-	"Answer the color used to highlight removed text lines in a diff view."
-	
-	^ Color r: 0.84 g: 0.0 b: 0.0 alpha: 0.2
-]
-
-{ #category : #'accessing - colors' }
-PharoDarkTheme2 >> disabledColor [ 
-	^ Color gray lighter
-]
-
 { #category : #'fill-styles' }
 PharoDarkTheme2 >> dropListNormalFillStyleFor: aDropList [
 	"Return the normal fillStyle for the given drop list."
@@ -270,23 +191,6 @@ PharoDarkTheme2 >> dropListNormalListBorderStyleFor: aDropList [
 	^ BorderStyle inset
 		  width: 1;
 		  baseColor: self buttonColor lighter
-]
-
-{ #category : #'fill-styles' }
-PharoDarkTheme2 >> dropListNormalListFillStyleFor: aDropList [
-	"Return the normal fillStyle for the list of the given drop list."
-	
-	^ self backgroundColor
-]
-
-{ #category : #'accessing - colors' }
-PharoDarkTheme2 >> enabledColor [ 
-	^ self textColor
-]
-
-{ #category : #'basic-colors' }
-PharoDarkTheme2 >> errorPopperBackgroundColor [
-	^ Color red muchDarker
 ]
 
 { #category : #initialization }
@@ -309,56 +213,9 @@ PharoDarkTheme2 >> labelDisabledColorFor: aLabel [
 ]
 
 { #category : #'accessing - colors' }
-PharoDarkTheme2 >> lessConspicuousColorFrom: aColor [
-
-	^	aColor slightlyLighter
-]
-
-{ #category : #'accessing - colors' }
-PharoDarkTheme2 >> lightBackgroundColor [
-
-	^ Color r: 0.218 g: 0.217 b: 0.217
-]
-
-{ #category : #'accessing - colors' }
-PharoDarkTheme2 >> lineNumberColor [ 
-	^ Color gray lighter lighter
-]
-
-{ #category : #'fill-styles' }
-PharoDarkTheme2 >> listNormalFillStyleFor: aList [
-	"Return the normal fillStyle for the given list."
-	
-	^ self backgroundColor
-]
-
-{ #category : #'accessing - colors' }
-PharoDarkTheme2 >> listTextColor [
-	"Answer the list text color to use."
-
-	^ self textColor
-]
-
-{ #category : #'accessing - colors' }
-PharoDarkTheme2 >> menuBorderColor [
-	^ self borderColor
-]
-
-{ #category : #'accessing - colors' }
 PharoDarkTheme2 >> menuBorderWidth [
 	self flag: 'not returning an object color'.
 	^ self borderWidth * self displayScaleFactor
-]
-
-{ #category : #defaults }
-PharoDarkTheme2 >> menuItemDisabledTextColorFor: aMenuItem [
-
-	^ Color lightGray
-]
-
-{ #category : #'accessing - colors' }
-PharoDarkTheme2 >> mouseOverColor [ 
-	^ self lightBackgroundColor
 ]
 
 { #category : #initialization }
@@ -366,11 +223,6 @@ PharoDarkTheme2 >> newRadioMarkerForm [
 	"Answer a new checkbox marker form."
 	self flag: 'not returning an object color'.
 	^ Form extent: 12@12 depth: 32
-]
-
-{ #category : #'accessing - colors' }
-PharoDarkTheme2 >> scrollbarColor [ 
-	^ self buttonColor
 ]
 
 { #category : #'border-styles - scrollbars' }
@@ -387,21 +239,6 @@ PharoDarkTheme2 >> scrollbarPressedThumbFillStyleFor: aScrollbar [
 	^ self buttonSelectedFillStyleFor: aScrollbar
 ]
 
-{ #category : #'accessing - colors' }
-PharoDarkTheme2 >> secondarySelectionColor [
-	^ Color r: 0.31 g: 0.31 b: 0.36 alpha: 1.0
-]
-
-{ #category : #'accessing - colors' }
-PharoDarkTheme2 >> selectionColor [
-	^ Color r: 16r07 g: 16r63 b: 16rAD range: 255
-]
-
-{ #category : #'accessing - colors' }
-PharoDarkTheme2 >> selectionTextColor [
-	^ Color r: 16rE0 g: 16rE2 b: 16rE4 range: 255
-]
-
 { #category : #defaults }
 PharoDarkTheme2 >> shStyleTableName [
 	self flag: 'not returning an object color'.
@@ -412,16 +249,6 @@ PharoDarkTheme2 >> shStyleTableName [
 PharoDarkTheme2 >> sliderNormalFillStyleFor: aSlider [
 
 	^ self backgroundColor
-]
-
-{ #category : #'accessing - colors' }
-PharoDarkTheme2 >> spotlightWindowColor [ 
-	^ self windowColor
-]
-
-{ #category : #'accessing - colors' }
-PharoDarkTheme2 >> successTextColor [
-	^ Color green darker darker darker
 ]
 
 { #category : #'fill-styles - taskbar' }
@@ -546,36 +373,6 @@ PharoDarkTheme2 >> taskbarItemSelectedPressedBorderStyleFor: aButton [
 PharoDarkTheme2 >> taskbarItemSelectedPressedFillStyleFor: aButton [
 	self flag: 'not returning an object color'.
 	^ SolidFillStyle color: (Color white alpha: 0.35)
-]
-
-{ #category : #'accessing - colors' }
-PharoDarkTheme2 >> textColor [
-	^ Color white
-]
-
-{ #category : #'accessing - colors' }
-PharoDarkTheme2 >> textColorForNonStandardBackground [
-	^ Color black
-]
-
-{ #category : #'fill-styles' }
-PharoDarkTheme2 >> textEditorNormalFillStyleFor: aTextEditor [
-	^ self backgroundColor
-]
-
-{ #category : #'accessing - colors' }
-PharoDarkTheme2 >> unfocusedSelectionColor [
-	^ self secondarySelectionColor
-]
-
-{ #category : #'accessing - colors' }
-PharoDarkTheme2 >> warningTextColor [
-	^ Color yellow darker darker
-]
-
-{ #category : #'fill-styles' }
-PharoDarkTheme2 >> windowActiveLabelFillStyleFor: aWindow [
-	^ self textColor
 ]
 
 { #category : #'label-styles - windows' }

@@ -22,7 +22,7 @@ UIThemeColorConfigurator >> badgeColor [
 { #category : #colors }
 UIThemeColorConfigurator >> badgeTextColor [
 
-	^ self subclassResponsibility
+	^ Color white
 ]
 
 { #category : #colors }
@@ -114,7 +114,7 @@ UIThemeColorConfigurator >> darkBaseColor [
 { #category : #colors }
 UIThemeColorConfigurator >> desktopColor [
 
-	^ self subclassResponsibility
+	^ Color r: 240 g: 240 b: 240 range: 255
 ]
 
 { #category : #colors }
@@ -186,7 +186,7 @@ UIThemeColorConfigurator >> dropListNormalFillStyleFor: anObject [
 { #category : #colors }
 UIThemeColorConfigurator >> dropListNormalListFillStyleFor: anObject [
 
-	^ self subclassResponsibility
+	^ Color white
 ]
 
 { #category : #colors }
@@ -208,9 +208,9 @@ UIThemeColorConfigurator >> ghostTextColor [
 ]
 
 { #category : #colors }
-UIThemeColorConfigurator >> lessConspicuousColorFrom: anObject [
+UIThemeColorConfigurator >> lessConspicuousColorFrom: aColor [
 
-	^ self subclassResponsibility
+	^ aColor alphaMixed: 0.5 with: Color white
 ]
 
 { #category : #colors }
@@ -252,7 +252,7 @@ UIThemeColorConfigurator >> listBackgroundColor [
 { #category : #colors }
 UIThemeColorConfigurator >> listNormalFillStyleFor: anObject [
 
-	^ self subclassResponsibility
+	^ Color white
 ]
 
 { #category : #colors }
@@ -264,7 +264,7 @@ UIThemeColorConfigurator >> listTextColor [
 { #category : #colors }
 UIThemeColorConfigurator >> menuBorderColor [
 
-	^ self subclassResponsibility
+	^ themeSettings menuBorderColor
 ]
 
 { #category : #colors }
@@ -274,9 +274,11 @@ UIThemeColorConfigurator >> menuColor [
 ]
 
 { #category : #colors }
-UIThemeColorConfigurator >> menuItemDisabledTextColorFor: anObject [
+UIThemeColorConfigurator >> menuItemDisabledTextColorFor: aMenuItem [
 
-	^ self subclassResponsibility
+	^ (aMenuItem color luminance - aMenuItem owner color luminance) abs < 0.3
+		ifTrue: [ aMenuItem owner color contrastingBlackAndWhiteColor muchDarker ]
+		ifFalse: [ aMenuItem owner color muchDarker ]
 ]
 
 { #category : #colors }
@@ -312,7 +314,7 @@ UIThemeColorConfigurator >> mouseOverColor [
 { #category : #colors }
 UIThemeColorConfigurator >> paginatorSelectionColor [
 
-	^ self subclassResponsibility
+	^ self darkBaseColor alpha: 0.8
 ]
 
 { #category : #colors }
@@ -324,7 +326,7 @@ UIThemeColorConfigurator >> patchworkUIThemeColorFor: anObject [
 { #category : #colors }
 UIThemeColorConfigurator >> popoverButtonColor [
 
-	^ self subclassResponsibility
+	^ self darkBaseColor
 ]
 
 { #category : #colors }
@@ -342,7 +344,7 @@ UIThemeColorConfigurator >> progressBarProgressColorFor: anObject [
 { #category : #colors }
 UIThemeColorConfigurator >> scrollbarColor [
 
-	^ self subclassResponsibility
+	^ themeSettings scrollbarColor
 ]
 
 { #category : #colors }
@@ -374,13 +376,13 @@ UIThemeColorConfigurator >> selectionBarColor [
 { #category : #colors }
 UIThemeColorConfigurator >> selectionColor [
 
-	^ self subclassResponsibility
+	^ themeSettings selectionColor
 ]
 
 { #category : #colors }
 UIThemeColorConfigurator >> selectionTextColor [
 
-	^ self subclassResponsibility
+	^ themeSettings selectionTextColor
 ]
 
 { #category : #colors }
@@ -454,19 +456,19 @@ UIThemeColorConfigurator >> taskbarMinimizedButtonColorFor: anObject [
 { #category : #colors }
 UIThemeColorConfigurator >> testColorError [
 
-	^ self subclassResponsibility
+	^ Color red darker darker
 ]
 
 { #category : #colors }
 UIThemeColorConfigurator >> testColorFailure [
 
-	^ self subclassResponsibility
+	^ Color yellow darker darker darker
 ]
 
 { #category : #colors }
 UIThemeColorConfigurator >> testColorPassing [
 
-	^ self subclassResponsibility
+	^ Color green darker darker
 ]
 
 { #category : #colors }
@@ -484,7 +486,7 @@ UIThemeColorConfigurator >> textColorForNonStandardBackground [
 { #category : #colors }
 UIThemeColorConfigurator >> textEditorNormalFillStyleFor: anObject [
 
-	^ self subclassResponsibility
+	^ Color white
 ]
 
 { #category : #accessing }
@@ -502,7 +504,7 @@ UIThemeColorConfigurator >> themeSettings: anObject [
 { #category : #colors }
 UIThemeColorConfigurator >> unfocusedSelectionColor [
 
-	^ self subclassResponsibility
+	^ themeSettings unfocusedSelectionColor
 ]
 
 { #category : #colors }
@@ -532,7 +534,7 @@ UIThemeColorConfigurator >> warningTextColor [
 { #category : #colors }
 UIThemeColorConfigurator >> windowActiveLabelFillStyleFor: anObject [
 
-	^ self subclassResponsibility
+	^ Color black
 ]
 
 { #category : #colors }

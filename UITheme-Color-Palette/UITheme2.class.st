@@ -1795,7 +1795,7 @@ UITheme2 >> denySound [
 { #category : #'fill-styles' }
 UITheme2 >> desktopColor [
 
-	^(Color r: 240 g: 240 b: 240 range: 255)
+	^ colorPalette desktopColor
 ]
 
 { #category : #'fill-styles' }
@@ -2178,7 +2178,7 @@ UITheme2 >> dropListNormalListBorderStyleFor: aDropList [
 UITheme2 >> dropListNormalListFillStyleFor: aDropList [
 	"Return the normal fillStyle for the list of the given drop list."
 	
-	^Color white
+	^ colorPalette dropListNormalListFillStyleFor: aDropList
 ]
 
 { #category : #defaults }
@@ -2516,9 +2516,10 @@ UITheme2 >> listNormalBorderStyleFor: aList [
 
 { #category : #'fill-styles' }
 UITheme2 >> listNormalFillStyleFor: aList [
+
 	"Return the normal fillStyle for the given list."
-	
-	^Color white
+
+	^ colorPalette listNormalFillStyleFor: aList
 ]
 
 { #category : #'accessing - colors' }
@@ -2612,9 +2613,7 @@ UITheme2 >> menuFont [
 UITheme2 >> menuItemDisabledTextColorFor: aMenuItem [
 	"Answer the color to use for disabled menu item text."
 
-	^((aMenuItem color luminance - aMenuItem owner color luminance) abs < 0.3)
-		ifTrue: [aMenuItem owner color contrastingBlackAndWhiteColor muchDarker]
-		ifFalse: [aMenuItem owner color muchDarker]
+	^ colorPalette menuItemDisabledTextColorFor: aMenuItem
 ]
 
 { #category : #'border-styles - buttons' }
@@ -5823,9 +5822,10 @@ UITheme2 >> textEditorNormalBorderStyleFor: aTextEditor [
 
 { #category : #'fill-styles' }
 UITheme2 >> textEditorNormalFillStyleFor: aTextEditor [
+
 	"Return the normal fillStyle for the given text editor."
-	
-	^Color white
+
+	^ colorPalette textEditorNormalFillStyleFor: aTextEditor
 ]
 
 { #category : #'border-styles - buttons' }
@@ -6136,9 +6136,10 @@ UITheme2 >> windowActiveFillStyleFor: aWindow [
 
 { #category : #'fill-styles' }
 UITheme2 >> windowActiveLabelFillStyleFor: aWindow [
+
 	"Return the window active label fillStyle for the given window."
-	
-	^Color black
+
+	^ colorPalette windowActiveLabelFillStyleFor: aWindow
 ]
 
 { #category : #'fill-styles' }
