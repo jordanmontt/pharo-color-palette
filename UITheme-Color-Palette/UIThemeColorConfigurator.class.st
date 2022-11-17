@@ -43,7 +43,7 @@ UIThemeColorConfigurator >> baseColor [
 { #category : #colors }
 UIThemeColorConfigurator >> baseColorFor: anObject [
 
-	^ self subclassResponsibility
+	^ self baseColor
 ]
 
 { #category : #colors }
@@ -474,12 +474,6 @@ UIThemeColorConfigurator >> textColorForNonStandardBackground [
 
 { #category : #colors }
 UIThemeColorConfigurator >> textEditorNormalFillStyleFor: anObject [
-
-	^ self subclassResponsibility
-]
-
-{ #category : #colors }
-UIThemeColorConfigurator >> treeLineColorsFrom: anObject [
 
 	^ self subclassResponsibility
 ]
