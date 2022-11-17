@@ -7,13 +7,13 @@ Class {
 { #category : #colors }
 UIThemeColorConfigurator >> backgroundColor [
 
-	^ self subclassResponsibility
+	^ Color white
 ]
 
 { #category : #colors }
 UIThemeColorConfigurator >> badgeColor [
 
-	^ self subclassResponsibility
+	^ Color red
 ]
 
 { #category : #colors }
@@ -25,13 +25,13 @@ UIThemeColorConfigurator >> badgeTextColor [
 { #category : #colors }
 UIThemeColorConfigurator >> balloonBackgroundColor [
 
-	^ self subclassResponsibility
+	^ self lightBaseColor
 ]
 
 { #category : #colors }
 UIThemeColorConfigurator >> balloonTextColor [
 
-	^ self subclassResponsibility
+	^ self textColor
 ]
 
 { #category : #colors }
@@ -61,7 +61,7 @@ UIThemeColorConfigurator >> baseSelectionColor [
 { #category : #colors }
 UIThemeColorConfigurator >> borderColor [
 
-	^ self subclassResponsibility
+	^ Color gray
 ]
 
 { #category : #colors }
@@ -79,25 +79,25 @@ UIThemeColorConfigurator >> buttonColorFor: anObject [
 { #category : #colors }
 UIThemeColorConfigurator >> caretColor [
 
-	^ self subclassResponsibility
+	^ Color blue
 ]
 
 { #category : #colors }
 UIThemeColorConfigurator >> classExtensionColor [
 
-	^ self subclassResponsibility
+	^ Color gray darker
 ]
 
 { #category : #colors }
 UIThemeColorConfigurator >> dangerBackgroundColor [
 
-	^ self subclassResponsibility
+	^ self dangerTextColor darker darker
 ]
 
 { #category : #colors }
 UIThemeColorConfigurator >> dangerTextColor [
 
-	^ self subclassResponsibility
+	^ Color red darker darker
 ]
 
 { #category : #colors }
@@ -115,61 +115,61 @@ UIThemeColorConfigurator >> desktopColor [
 { #category : #colors }
 UIThemeColorConfigurator >> diffAdditionalLineBackgroundColor [
 
-	^ self subclassResponsibility
+	^ Color green alpha: 0.2
 ]
 
 { #category : #colors }
 UIThemeColorConfigurator >> diffAdditionalTextInLineBackgroundColor [
 
-	^ self subclassResponsibility
+	^ self diffAdditionalLineBackgroundColor alpha: 0.4
 ]
 
 { #category : #colors }
 UIThemeColorConfigurator >> diffEdgeColor [
 
-	^ self subclassResponsibility
+	^ Color gray alpha: 0.3
 ]
 
 { #category : #colors }
 UIThemeColorConfigurator >> diffJoinColor [
 
-	^ self subclassResponsibility
+	^ Color paleBlue duller
 ]
 
 { #category : #colors }
 UIThemeColorConfigurator >> diffMapColor [
 
-	^ self subclassResponsibility
+	^ self backgroundColor
 ]
 
 { #category : #colors }
 UIThemeColorConfigurator >> diffModificatedLineBackgroundColor [
 
-	^ self subclassResponsibility
+	^ Color yellow alpha: 0.2
 ]
 
 { #category : #colors }
 UIThemeColorConfigurator >> diffRemovalHighlightColor [
 
-	^ self subclassResponsibility
+	^ self diffRemovedLinesBackgroundColor alpha: 0.4
 ]
 
 { #category : #colors }
 UIThemeColorConfigurator >> diffRemovedLinesBackgroundColor [
 
-	^ self subclassResponsibility
+	^ Color red alpha: 0.2
 ]
 
 { #category : #colors }
 UIThemeColorConfigurator >> disabledColor [
 
-	^ self subclassResponsibility
+	^ Color gray
 ]
 
 { #category : #colors }
 UIThemeColorConfigurator >> disabledTextColor [
 
-	^ self subclassResponsibility
+	^ self disabledColor
 ]
 
 { #category : #colors }
@@ -187,19 +187,19 @@ UIThemeColorConfigurator >> dropListNormalListFillStyleFor: anObject [
 { #category : #colors }
 UIThemeColorConfigurator >> enabledColor [
 
-	^ self subclassResponsibility
+	^ Color black
 ]
 
 { #category : #colors }
 UIThemeColorConfigurator >> errorPopperBackgroundColor [
 
-	^ self subclassResponsibility
+	^ Color paleRed
 ]
 
 { #category : #colors }
 UIThemeColorConfigurator >> ghostTextColor [
 
-	^ self subclassResponsibility
+	^ Color lightGray
 ]
 
 { #category : #colors }
@@ -211,13 +211,19 @@ UIThemeColorConfigurator >> lessConspicuousColorFrom: anObject [
 { #category : #colors }
 UIThemeColorConfigurator >> lightBackgroundColor [
 
-	^ self subclassResponsibility
+	^ Color veryLightGray muchLighter
 ]
 
 { #category : #colors }
 UIThemeColorConfigurator >> lightBaseColor [
 
 	^ self subclassResponsibility
+]
+
+{ #category : #colors }
+UIThemeColorConfigurator >> lightColorFor: aButton [
+
+	^ self lightBaseColor
 ]
 
 { #category : #colors }
@@ -229,13 +235,13 @@ UIThemeColorConfigurator >> lightSelectionColor [
 { #category : #colors }
 UIThemeColorConfigurator >> lineNumberColor [
 
-	^ self subclassResponsibility
+	^ Color gray muchDarker
 ]
 
 { #category : #colors }
 UIThemeColorConfigurator >> listBackgroundColor [
 
-	^ self subclassResponsibility
+	^ self backgroundColor
 ]
 
 { #category : #colors }
@@ -247,7 +253,7 @@ UIThemeColorConfigurator >> listNormalFillStyleFor: anObject [
 { #category : #colors }
 UIThemeColorConfigurator >> listTextColor [
 
-	^ self subclassResponsibility
+	^ Color black
 ]
 
 { #category : #colors }
@@ -295,7 +301,7 @@ UIThemeColorConfigurator >> menuTitleColor [
 { #category : #colors }
 UIThemeColorConfigurator >> mouseOverColor [
 
-	^ self subclassResponsibility
+	^ self backgroundColor darker darker
 ]
 
 { #category : #colors }
@@ -343,13 +349,13 @@ UIThemeColorConfigurator >> scrollbarColorFor: anObject [
 { #category : #colors }
 UIThemeColorConfigurator >> secondarySelectionColor [
 
-	^ self subclassResponsibility
+	^ Color r: 0.927 g: 0.962 b: 0.995 alpha: 1.0
 ]
 
 { #category : #colors }
 UIThemeColorConfigurator >> selectedItemListTextColor [
 
-	^ self subclassResponsibility
+	^ self textColor
 ]
 
 { #category : #colors }
@@ -379,37 +385,37 @@ UIThemeColorConfigurator >> sliderNormalFillStyleFor: anObject [
 { #category : #colors }
 UIThemeColorConfigurator >> spotlightWindowColor [
 
-	^ self subclassResponsibility
+	^ self selectionColor muchDarker
 ]
 
 { #category : #colors }
-UIThemeColorConfigurator >> subgroupColorFrom: anObject [
+UIThemeColorConfigurator >> subgroupColorFrom: paneColor [
 
-	^ self subclassResponsibility
+	^ self lightColorFor: paneColor "self class baseColor"
 ]
 
 { #category : #colors }
 UIThemeColorConfigurator >> successBackgroundColor [
 
-	^ self subclassResponsibility
+	^ self successTextColor lighter lighter
 ]
 
 { #category : #colors }
 UIThemeColorConfigurator >> successTextColor [
 
-	^ self subclassResponsibility
+	^ Color r: 0 g: 0.5 b: 0
 ]
 
 { #category : #colors }
 UIThemeColorConfigurator >> taskbarActiveButtonColorFor: anObject [
 
-	^ self subclassResponsibility
+	^ self scrollbarColor alphaMixed: 0.7 with: Color white
 ]
 
 { #category : #colors }
-UIThemeColorConfigurator >> taskbarButtonColorFor: anObject [
+UIThemeColorConfigurator >> taskbarButtonColorFor: aButton [
 
-	^ self subclassResponsibility
+	^ self windowColorFor: aButton model
 ]
 
 { #category : #colors }
@@ -421,19 +427,19 @@ UIThemeColorConfigurator >> taskbarButtonLabelColorFor: anObject [
 { #category : #colors }
 UIThemeColorConfigurator >> taskbarItemLabelColorForCollapsed: anObject [
 
-	^ self subclassResponsibility
+	^ Color darkGray
 ]
 
 { #category : #colors }
 UIThemeColorConfigurator >> taskbarItemLabelColorForExpanded: anObject [
 
-	^ self subclassResponsibility
+	^ Color black
 ]
 
 { #category : #colors }
 UIThemeColorConfigurator >> taskbarMinimizedButtonColorFor: anObject [
 
-	^ self subclassResponsibility
+	^ Color transparent
 ]
 
 { #category : #colors }
@@ -457,13 +463,13 @@ UIThemeColorConfigurator >> testColorPassing [
 { #category : #colors }
 UIThemeColorConfigurator >> textColor [
 
-	^ self subclassResponsibility
+	^ Color black
 ]
 
 { #category : #colors }
 UIThemeColorConfigurator >> textColorForNonStandardBackground [
 
-	^ self subclassResponsibility
+	^ self textColor
 ]
 
 { #category : #colors }
@@ -493,7 +499,7 @@ UIThemeColorConfigurator >> unfocusedSelectionColor [
 { #category : #colors }
 UIThemeColorConfigurator >> urlColor [
 
-	^ self subclassResponsibility
+	^ Color fromHexString: '03A9F4'
 ]
 
 { #category : #colors }
@@ -505,13 +511,13 @@ UIThemeColorConfigurator >> veryLightSelectionColor [
 { #category : #colors }
 UIThemeColorConfigurator >> warningBackgroundColor [
 
-	^ self subclassResponsibility
+	^ Color yellow
 ]
 
 { #category : #colors }
 UIThemeColorConfigurator >> warningTextColor [
 
-	^ self subclassResponsibility
+	^ Color yellow muchDarker
 ]
 
 { #category : #colors }
@@ -535,7 +541,7 @@ UIThemeColorConfigurator >> windowColorFor: anObject [
 { #category : #colors }
 UIThemeColorConfigurator >> windowShadowColor [
 
-	^ self subclassResponsibility
+	^ Color gray
 ]
 
 { #category : #colors }
