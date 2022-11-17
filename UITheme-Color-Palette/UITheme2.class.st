@@ -7,7 +7,8 @@ Class {
 		'soundTheme',
 		'focusIndicator',
 		'windowActiveDropShadowStyle',
-		'useScrollbarThumbShadow'
+		'useScrollbarThumbShadow',
+		'colorPalette'
 	],
 	#classVars : [
 		'Builder',
@@ -298,30 +299,31 @@ UITheme2 >> autoMenuColor [
 { #category : #'accessing - colors' }
 UITheme2 >> backgroundColor [
 
-	^ Color white
+	^ colorPalette backgroundColor
 ]
 
 { #category : #'accessing - colors' }
 UITheme2 >> balloonBackgroundColor [
 
-	^self lightBaseColor
+	^ colorPalette balloonBackgroundColor
 ]
 
 { #category : #'accessing - colors' }
 UITheme2 >> balloonTextColor [
 
-	^self textColor
+	^ colorPalette balloonTextColor
 ]
 
 { #category : #'accessing - colors' }
 UITheme2 >> baseColor [
-	^ self class baseColor
+
+	^ colorPalette baseColor
 ]
 
 { #category : #'basic-colors' }
 UITheme2 >> baseColorFor: aWidget [
 
-	^ self class baseColor
+	^ colorPalette baseColorFor: aWidget
 ]
 
 { #category : #private }
@@ -376,7 +378,8 @@ UITheme2 >> basicCreateArrowOfDirection: aSymbolDirection size: finalSizeInteger
 
 { #category : #'accessing - colors' }
 UITheme2 >> borderColor [ 
-	^ Color gray
+
+	^ colorPalette borderColor
 ]
 
 { #category : #accessing }
@@ -417,15 +420,18 @@ UITheme2 >> buttonBottomRightForm [
 
 { #category : #'accessing - colors' }
 UITheme2 >> buttonColor [ 
-	^ self settings buttonColor
+
+	^ colorPalette buttonColor
 ]
 
 { #category : #'basic-colors' }
 UITheme2 >> buttonColorFor: aButton [
+
 	"Answer the colour for the given button."
 
-	^self settings standardColorsOnly
-		ifTrue: [self buttonColor]
+	self flag: 'yu son of a bitch wa ta fac'.
+	^ self settings standardColorsOnly
+		ifTrue: [ self buttonColor ]
 		ifFalse: [ aButton colorToUse ]
 ]
 
@@ -835,7 +841,8 @@ UITheme2 >> buttonTopRightForm [
 
 { #category : #'accessing - colors' }
 UITheme2 >> caretColor [
-	^ Color blue
+
+	^ colorPalette caretColor
 ]
 
 { #category : #services }
@@ -1159,7 +1166,14 @@ UITheme2 >> chooseOrRequestIn: aThemedMorph title: title labels: labels values: 
 
 { #category : #'accessing - colors' }
 UITheme2 >> classExtensionColor [
-	^ Color gray darker
+
+	^ colorPalette classExtensionColor
+]
+
+{ #category : #initialization }
+UITheme2 >> colorPaletteForTheme [
+
+	^ self subclassResponsibility
 ]
 
 { #category : #'label-styles' }
@@ -1701,17 +1715,20 @@ UITheme2 >> customQuestionIn: aThemedMorph text: labelText yesText: yesText noTe
 
 { #category : #'accessing - colors' }
 UITheme2 >> dangerBackgroundColor [
-	^ self dangerTextColor darker darker
+
+	^ colorPalette dangerBackgroundColor
 ]
 
 { #category : #'accessing - colors' }
 UITheme2 >> dangerTextColor [
-	^ Color red darker darker
+
+	^ colorPalette dangerTextColor
 ]
 
 { #category : #'accessing - colors' }
 UITheme2 >> darkBaseColor [
-	^ self class darkBaseColor
+
+	^ colorPalette darkBaseColor
 ]
 
 { #category : #private }
@@ -1824,55 +1841,72 @@ UITheme2 >> dialogWindowPreferredCornerStyleFor: aDialogWindow [
 
 { #category : #'basic-colors - diffs' }
 UITheme2 >> diffAdditionalLineBackgroundColor [
+
 	"Answer the color used to show additions in a diff view."
-	^ Color green alpha: 0.2
+
+	^ colorPalette diffAdditionalLineBackgroundColor
 ]
 
 { #category : #'basic-colors - diffs' }
 UITheme2 >> diffAdditionalTextInLineBackgroundColor [
+
 	"Answer the color used to show addition highlights in a text line."
-	^ self diffAdditionalLineBackgroundColor alpha: 0.4
+
+	^ colorPalette diffAdditionalTextInLineBackgroundColor
 ]
 
 { #category : #'basic-colors - diffs' }
 UITheme2 >> diffEdgeColor [
+
 	"Answer the color used to show the border of the changes."
-	^ Color gray alpha: 0.3
+
+	^ colorPalette diffEdgeColor
 ]
 
 { #category : #'basic-colors - diffs' }
 UITheme2 >> diffJoinColor [
+
 	"Answer the color used for the join bar."
-	^ Color paleBlue duller
+
+	^ colorPalette diffJoinColor
 ]
 
 { #category : #'basic-colors - diffs' }
 UITheme2 >> diffMapColor [
+
 	"Answer the color used for the mapping bar on the left side."
-	^ self backgroundColor
+
+	^ colorPalette diffMapColor
 ]
 
 { #category : #'basic-colors - diffs' }
 UITheme2 >> diffModificatedLineBackgroundColor [
+
 	"Answer the color used to show changes."
-	^ Color yellow alpha: 0.2
+
+	^ colorPalette diffModificatedLineBackgroundColor
 ]
 
 { #category : #'basic-colors - diffs' }
 UITheme2 >> diffRemovalHighlightColor [
+
 	"Answer the color used to show removal highligths."
-	^ self diffRemovedLinesBackgroundColor alpha: 0.4
+
+	^ colorPalette diffRemovalHighlightColor
 ]
 
 { #category : #'basic-colors - diffs' }
 UITheme2 >> diffRemovedLinesBackgroundColor [
+
 	"Answer the color used to show removals in a diff view."
-	^ Color red alpha: 0.2
+
+	^ colorPalette diffRemovedLinesBackgroundColor
 ]
 
 { #category : #'accessing - colors' }
 UITheme2 >> disabledColor [ 
-	^ Color gray
+
+	^ colorPalette disabledColor
 ]
 
 { #category : #'label-styles' }
@@ -1885,7 +1919,8 @@ UITheme2 >> disabledItemStyle [
 
 { #category : #'accessing - colors' }
 UITheme2 >> disabledTextColor [ 
-	^ self disabledColor
+
+	^ colorPalette disabledTextColor
 ]
 
 { #category : #accessing }
@@ -2155,7 +2190,7 @@ UITheme2 >> editableDropListMargins [
 { #category : #'accessing - colors' }
 UITheme2 >> enabledColor [
 
-	^ Color black
+	^ colorPalette enabledColor
 ]
 
 { #category : #services }
@@ -2177,7 +2212,8 @@ UITheme2 >> enterOrRequestIn: aThemedMorph title: title labels: labels values: v
 
 { #category : #'basic-colors' }
 UITheme2 >> errorPopperBackgroundColor [
-	^ Color paleRed
+
+	^ colorPalette errorPopperBackgroundColor
 ]
 
 { #category : #'border-styles - buttons' }
@@ -2273,7 +2309,7 @@ UITheme2 >> forms: anObject [
 { #category : #'accessing - colors' }
 UITheme2 >> ghostTextColor [
 
-	^ Color lightGray
+	^ colorPalette ghostTextColor
 ]
 
 { #category : #'border-styles' }
@@ -2316,7 +2352,8 @@ UITheme2 >> initialize [
 	self
 		initializeForms;
 		settings: self defaultSettings.
-	self windowActiveDropShadowStyle: #diffuse
+	self windowActiveDropShadowStyle: #diffuse.
+	colorPalette := self colorPaletteForTheme
 ]
 
 { #category : #initialization }
@@ -2403,18 +2440,19 @@ UITheme2 >> labelFont [
 { #category : #'accessing - colors' }
 UITheme2 >> lessConspicuousColorFrom: aColor [
 
-	^	aColor alphaMixed: 0.5 with: Color white
+	^ colorPalette lessConspicuousColorFrom: aColor
 ]
 
 { #category : #'accessing - colors' }
 UITheme2 >> lightBackgroundColor [ 
-	^ Color veryLightGray muchLighter
+
+	^ colorPalette lightBackgroundColor
 ]
 
 { #category : #'accessing - colors' }
 UITheme2 >> lightBaseColor [
 
-	^ self class lightBaseColor
+	^ colorPalette lightBaseColor
 ]
 
 { #category : #private }
@@ -2429,12 +2467,14 @@ UITheme2 >> lightSelectionColorFor: aMorph [
 
 { #category : #'accessing - colors' }
 UITheme2 >> lineNumberColor [ 
-	^ Color gray muchDarker
+	
+	^ colorPalette lineNumberColor
 ]
 
 { #category : #'accessing - colors' }
 UITheme2 >> listBackgroundColor [
-	^ self backgroundColor
+
+	^ colorPalette listBackgroundColor
 ]
 
 { #category : #'border-styles' }
@@ -2483,9 +2523,8 @@ UITheme2 >> listNormalFillStyleFor: aList [
 
 { #category : #'accessing - colors' }
 UITheme2 >> listTextColor [
-	"Answer the list text color to use."
 
-	^Color black
+	^ colorPalette listTextColor
 ]
 
 { #category : #services }
@@ -2508,7 +2547,8 @@ UITheme2 >> menuBarFont [
 
 { #category : #'accessing - colors' }
 UITheme2 >> menuBorderColor [
-	^  self settings menuBorderColor
+
+	^ colorPalette menuBorderColor
 ]
 
 { #category : #accessing }
@@ -2525,9 +2565,8 @@ UITheme2 >> menuCloseForm [
 
 { #category : #'accessing - colors' }
 UITheme2 >> menuColor [
-	"Answer the menu color to use."
 
-	^self settings menuColor
+	^ colorPalette menuColor
 ]
 
 { #category : #'fill-styles' }
@@ -2640,7 +2679,8 @@ UITheme2 >> menuItemSelectedTextColorFor: aMenuItem [
 
 { #category : #'accessing - colors' }
 UITheme2 >> menuKeyboardFocusColor [
-	^ self settings menuKeyboardFocusColor
+
+	^ colorPalette menuKeyboardFocusColor
 ]
 
 { #category : #'label-styles' }
@@ -2652,18 +2692,20 @@ UITheme2 >> menuPinForm [
 
 { #category : #'accessing - colors' }
 UITheme2 >> menuSelectionColor [
-	^ self settings menuSelectionColor
+
+	^ colorPalette menuSelectionColor
 ]
 
 { #category : #'accessing - colors' }
 UITheme2 >> menuShadowColor [
-	^ self settings menuShadowColor
+
+	^ colorPalette menuShadowColor
 ]
 
 { #category : #'accessing - colors' }
 UITheme2 >> menuTitleColor [
-	"Answer the menu title color to use."
-	^self settings menuTitleColor
+
+	^ colorPalette menuTitleColor
 ]
 
 { #category : #'fill-styles' }
@@ -2766,12 +2808,14 @@ UITheme2 >> morphTreeSplitterPressedFillStyleFor: aSplitter [
 ]
 
 { #category : #'accessing - colors' }
-UITheme2 >> mouseOverColor [ 
+UITheme2 >> mouseOverColor [
+
 	"This color is used when hovering a raw of a list / table.
-	This color should be different from the default background color and from the raw alternate color
+	This color should be different from the default background color and from the raw
+	alternate color
 	(see FTTableContainerMorph>>#alternateRowsColor."
-	
-	^ self backgroundColor darker darker
+
+	^ colorPalette mouseOverColor
 ]
 
 { #category : #'fill-styles' }
@@ -4689,8 +4733,10 @@ UITheme2 >> passwordEntryIn: aThemedMorph text: aStringOrText title: aString ent
 
 { #category : #'basic-colors' }
 UITheme2 >> patchworkUIThemeColorFor: aWindowOrModel [
+
 	"Answer the colour for the given window."
-	^ self settings windowColor
+
+	^ colorPalette patchworkUIThemeColorFor: aWindowOrModel
 ]
 
 { #category : #'border-styles' }
@@ -4739,9 +4785,10 @@ UITheme2 >> progressBarBorderStyleFor: aProgressBar [
 
 { #category : #'basic-colors' }
 UITheme2 >> progressBarColorFor: aProgressBar [
+
 	"Answer the colour for the given progress bar."
 
-	^self settings progressBarColor
+	^ colorPalette progressBarColorFor: aProgressBar
 ]
 
 { #category : #'fill-styles' }
@@ -4751,9 +4798,10 @@ UITheme2 >> progressBarFillStyleFor: aProgressBar [
 
 { #category : #'basic-colors' }
 UITheme2 >> progressBarProgressColorFor: aProgressBar [
+
 	"Answer the colour for the progress part of the given progress bar."
 
-	^self settings progressBarProgressColor
+	^ colorPalette progressBarProgressColorFor: aProgressBar
 ]
 
 { #category : #'fill-styles' }
@@ -4945,17 +4993,19 @@ UITheme2 >> scrollbarButtonCornerStyleIn: aThemedMorph [
 
 { #category : #'accessing - colors' }
 UITheme2 >> scrollbarColor [
-	^ self settings scrollbarColor
+
+	^ colorPalette scrollbarColor
 ]
 
 { #category : #'basic-colors' }
 UITheme2 >> scrollbarColorFor: aScrollbar [
-	"Answer the colour for the given scrollbar."
 
-	^self settings standardColorsOnly
-		ifTrue: [self settings scrollbarColor]
-		ifFalse: [aScrollbar lastPaneColor
-					 ifNil: [Color white]]
+	"Answer the colour for the given scrollbar."
+	self flag: 'whaat'.
+	^ self settings standardColorsOnly
+		ifTrue: [ self settings scrollbarColor ]
+		ifFalse: [ aScrollbar lastPaneColor
+			ifNil: [ Color white ] ]
 ]
 
 { #category : #'fill-styles - scrollbars' }
@@ -5251,7 +5301,8 @@ UITheme2 >> scrollbarThumbVerticalMiddleForm [
 
 { #category : #'accessing - colors' }
 UITheme2 >> secondarySelectionColor [
-	^ Color r: 0.927 g: 0.962 b: 0.995 alpha: 1.0
+
+	^ colorPalette secondarySelectionColor
 ]
 
 { #category : #private }
@@ -5263,22 +5314,24 @@ UITheme2 >> selectedFillStyleFor: aMorph height: anInteger [
 
 { #category : #'accessing - colors' }
 UITheme2 >> selectedItemListTextColor [
+
 	"Answer the color for the selected item in a list text."
 
-	^ self textColor
+	^ colorPalette selectedItemListTextColor
 ]
 
 { #category : #'accessing - colors' }
 UITheme2 >> selectionBarColor [
 
-	^ self settings selectionBarColor
+	^ colorPalette selectionBarColor
 ]
 
 { #category : #'accessing - colors' }
 UITheme2 >> selectionColor [
+
 	"Answer the selection color to use.."
 
-	^ self settings selectionColor
+	^ colorPalette selectionColor
 ]
 
 { #category : #defaults }
@@ -5289,7 +5342,8 @@ UITheme2 >> selectionColorForFrame: frame [
 
 { #category : #'accessing - colors' }
 UITheme2 >> selectionTextColor [
- ^ self settings selectionTextColor
+
+	^ colorPalette selectionTextColor
 ]
 
 { #category : #'fill-styles' }
@@ -5413,7 +5467,8 @@ UITheme2 >> splitterPressedFillStyleFor: aSplitter [
 
 { #category : #'accessing - colors' }
 UITheme2 >> spotlightWindowColor [ 
-	^ self selectionColor muchDarker
+
+	^ colorPalette spotlightWindowColor
 ]
 
 { #category : #defaults }
@@ -5426,19 +5481,22 @@ UITheme2 >> statusFont [
 
 { #category : #'basic-colors' }
 UITheme2 >> subgroupColorFrom: paneColor [
+
 	"Answer the colour for a subgroup given the pane colour."
 
-	^ self lightColorFor: paneColor" self class baseColor"
+	^ colorPalette subgroupColorFrom: paneColor
 ]
 
 { #category : #'accessing - colors' }
 UITheme2 >> successBackgroundColor [
-	^ self successTextColor lighter lighter
+
+	^ colorPalette successBackgroundColor
 ]
 
 { #category : #'accessing - colors' }
 UITheme2 >> successTextColor [
-	^ Color r: 0 g: 0.5 b: 0
+
+	^ colorPalette successTextColor
 ]
 
 { #category : #'border-styles' }
@@ -5520,27 +5578,32 @@ UITheme2 >> taskListFillStyleFor: aTasklist [
 
 { #category : #'basic-colors' }
 UITheme2 >> taskbarActiveButtonColorFor: aButton [
+
 	"Answer the colour for the given active taskbar button."
 
-	^self scrollbarColor alphaMixed: 0.7 with: Color white
+	^ colorPalette taskbarActiveButtonColorFor: aButton
 ]
 
 { #category : #'basic-colors' }
 UITheme2 >> taskbarButtonColorFor: aButton [
-	"Answer the colour for the given taskbar button." 
-	^ self windowColorFor: aButton model
+
+	"Answer the colour for the given taskbar button."
+
+	^ colorPalette taskbarButtonColorFor: aButton
 ]
 
 { #category : #'basic-colors' }
 UITheme2 >> taskbarButtonLabelColorFor: aButton [
-	"Answer the colour for the label of the given taskbar button."
 
-	^aButton model
-		ifNil: [super taskbarButtonLabelColorFor: aButton]
+	"Answer the colour for the label of the given taskbar button."
+	
+	self flag: 'whaat'.
+	^ aButton model
+		ifNil: [ super taskbarButtonLabelColorFor: aButton ]
 		ifNotNil: [:win |
 			win isActive
-				ifTrue: [Color black]
-				ifFalse: [Color gray darker]]
+				ifTrue: [ Color black ]
+				ifFalse: [ Color gray darker ] ]
 ]
 
 { #category : #'fill-styles - taskbar' }
@@ -5564,16 +5627,20 @@ UITheme2 >> taskbarItemDisabledFillStyleFor: aButton [
 
 { #category : #'basic-colors' }
 UITheme2 >> taskbarItemLabelColorForCollapsed: aButton [
-	"Answer the colour for the label of the given taskbar button, given that the corresponding window is collapsed."
-	
-	^Color darkGray
+
+	"Answer the colour for the label of the given taskbar button, given that the corresponding
+	window is collapsed."
+
+	^ colorPalette taskbarItemLabelColorForCollapsed: aButton
 ]
 
 { #category : #'basic-colors' }
 UITheme2 >> taskbarItemLabelColorForExpanded: aButton [
-	"Answer the colour for the label of the given taskbar button, given that the corresponding window is collapsed."
-	
-	^ Color black
+
+	"Answer the colour for the label of the given taskbar button, given that the corresponding
+	window is collapsed."
+
+	^ colorPalette taskbarItemLabelColorForExpanded: aButton
 ]
 
 { #category : #'border-styles - taskbar' }
@@ -5676,9 +5743,10 @@ UITheme2 >> taskbarItemSelectedPressedFillStyleFor: aButton [
 
 { #category : #'basic-colors' }
 UITheme2 >> taskbarMinimizedButtonColorFor: aButton [
+
 	"Answer the colour for the given minimized taskbar button."
 
-	^Color transparent
+	^ colorPalette taskbarMinimizedButtonColorFor: aButton
 ]
 
 { #category : #'border-styles' }
@@ -5695,12 +5763,14 @@ UITheme2 >> taskbarThumbnailNormalBorderStyleFor: aWindow [
 
 { #category : #'accessing - colors' }
 UITheme2 >> textColor [ 
-	^ Color black
+
+	^ colorPalette textColor
 ]
 
 { #category : #'accessing - colors' }
 UITheme2 >> textColorForNonStandardBackground [
-	^ self textColor
+
+	^ colorPalette textColorForNonStandardBackground
 ]
 
 { #category : #'border-styles' }
@@ -5843,13 +5913,14 @@ UITheme2 >> treeExpandedForm [
 
 { #category : #'basic-colors' }
 UITheme2 >> treeLineColorsFrom: aColor [
+
 	"Answer the colours to use for the tree lines.
 	The given colour is the preferred colour."
-
-	^{aColor. Color transparent}
+	self flag: 'wooooowwsdsa'.
+	^ { aColor . Color transparent }
 ]
 
-{ #category : #'basic-colors' }
+{ #category : #accessing }
 UITheme2 >> treeLineDashes [
 	"Answer the dash lengths to use for the tree lines."
 
@@ -5872,7 +5943,8 @@ UITheme2 >> treeUnexpandedForm [
 
 { #category : #'accessing - colors' }
 UITheme2 >> unfocusedSelectionColor [
-	^ self settings unfocusedSelectionColor
+
+	^ colorPalette unfocusedSelectionColor
 ]
 
 { #category : #scrollbars }
@@ -5907,7 +5979,8 @@ UITheme2 >> updateWorldDockingBars [
 
 { #category : #'accessing - colors' }
 UITheme2 >> urlColor [
-	^ Color fromHexString: '03A9F4'
+
+	^ colorPalette urlColor
 ]
 
 { #category : #accessing }
@@ -5981,12 +6054,14 @@ UITheme2 >> veryLightSelectionColorFor: aMorph [
 
 { #category : #'accessing - colors' }
 UITheme2 >> warningBackgroundColor [
-	^ Color yellow
+
+	^ colorPalette warningBackgroundColor
 ]
 
 { #category : #'accessing - colors' }
 UITheme2 >> warningTextColor [
-	^ Color yellow muchDarker
+
+	^ colorPalette warningTextColor
 ]
 
 { #category : #'as yet unclassified' }
@@ -6122,16 +6197,18 @@ UITheme2 >> windowCollapseBoxLayoutFor: aWindow [
 
 { #category : #'accessing - colors' }
 UITheme2 >> windowColor [
+
 	"Answer the window color to use."
 
-	^self settings windowColor
+	^ colorPalette windowColor
 ]
 
 { #category : #'basic-colors' }
-UITheme2 >> windowColorFor: aWindowOrModel [ 
+UITheme2 >> windowColorFor: aWindowOrModel [
+
 	"Answer the colour for the given window."
 
-	^ self settings windowColor
+	^ colorPalette windowColorFor: aWindowOrModel
 ]
 
 { #category : #'border-styles' }
@@ -6355,9 +6432,10 @@ UITheme2 >> windowRightOffset [
 
 { #category : #'accessing - colors' }
 UITheme2 >> windowShadowColor [
+
 	"Answer the window shadow color to use."
 
-	^ Color gray
+	^ colorPalette windowShadowColor
 ]
 
 { #category : #defaults }
@@ -6377,9 +6455,10 @@ UITheme2 >> worldMainDockingBarBorderStyleFor: aDockingBar [
 
 { #category : #'basic-colors' }
 UITheme2 >> worldMainDockingBarColorFor: aDockingBar [
+
 	"Answer the base colour to use for a world main docking bar in this theme."
 
-	^self settings derivedMenuColor
+	^ colorPalette worldMainDockingBarColorFor: aDockingBar
 ]
 
 { #category : #'fill-styles' }
