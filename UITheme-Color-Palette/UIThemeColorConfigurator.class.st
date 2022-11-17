@@ -1,6 +1,9 @@
 Class {
 	#name : #UIThemeColorConfigurator,
 	#superclass : #Object,
+	#instVars : [
+		'themeSettings'
+	],
 	#category : #'UITheme-Color-Palette'
 }
 
@@ -71,9 +74,11 @@ UIThemeColorConfigurator >> buttonColor [
 ]
 
 { #category : #colors }
-UIThemeColorConfigurator >> buttonColorFor: anObject [
+UIThemeColorConfigurator >> buttonColorFor: aButton [
 
-	^ self subclassResponsibility
+	^ themeSettings standardColorsOnly
+		ifTrue: [ self buttonColor ]
+		ifFalse: [ aButton colorToUse ]
 ]
 
 { #category : #colors }
@@ -265,7 +270,7 @@ UIThemeColorConfigurator >> menuBorderColor [
 { #category : #colors }
 UIThemeColorConfigurator >> menuColor [
 
-	^ self subclassResponsibility
+	^ themeSettings menuColor
 ]
 
 { #category : #colors }
@@ -277,25 +282,25 @@ UIThemeColorConfigurator >> menuItemDisabledTextColorFor: anObject [
 { #category : #colors }
 UIThemeColorConfigurator >> menuKeyboardFocusColor [
 
-	^ self subclassResponsibility
+	^ themeSettings menuKeyboardFocusColor
 ]
 
 { #category : #colors }
 UIThemeColorConfigurator >> menuSelectionColor [
 
-	^ self subclassResponsibility
+	^ themeSettings menuSelectionColor
 ]
 
 { #category : #colors }
 UIThemeColorConfigurator >> menuShadowColor [
 
-	^ self subclassResponsibility
+	^ themeSettings menuShadowColor
 ]
 
 { #category : #colors }
 UIThemeColorConfigurator >> menuTitleColor [
 
-	^ self subclassResponsibility
+	^ themeSettings menuTitleColor
 ]
 
 { #category : #colors }
@@ -313,7 +318,7 @@ UIThemeColorConfigurator >> paginatorSelectionColor [
 { #category : #colors }
 UIThemeColorConfigurator >> patchworkUIThemeColorFor: anObject [
 
-	^ self subclassResponsibility
+	^ themeSettings windowColor
 ]
 
 { #category : #colors }
@@ -325,13 +330,13 @@ UIThemeColorConfigurator >> popoverButtonColor [
 { #category : #colors }
 UIThemeColorConfigurator >> progressBarColorFor: anObject [
 
-	^ self subclassResponsibility
+	^ themeSettings progressBarColor
 ]
 
 { #category : #colors }
 UIThemeColorConfigurator >> progressBarProgressColorFor: anObject [
 
-	^ self subclassResponsibility
+	^ themeSettings progressBarProgressColor
 ]
 
 { #category : #colors }
@@ -341,9 +346,11 @@ UIThemeColorConfigurator >> scrollbarColor [
 ]
 
 { #category : #colors }
-UIThemeColorConfigurator >> scrollbarColorFor: anObject [
+UIThemeColorConfigurator >> scrollbarColorFor: aScrollbar [
 
-	^ self subclassResponsibility
+	^ themeSettings standardColorsOnly
+		ifTrue: [ themeSettings scrollbarColor]
+		ifFalse: [ aScrollbar lastPaneColor ifNil: [ Color white ] ]
 ]
 
 { #category : #colors }
@@ -361,7 +368,7 @@ UIThemeColorConfigurator >> selectedItemListTextColor [
 { #category : #colors }
 UIThemeColorConfigurator >> selectionBarColor [
 
-	^ self subclassResponsibility
+	^ themeSettings selectionBarColor
 ]
 
 { #category : #colors }
@@ -419,9 +426,11 @@ UIThemeColorConfigurator >> taskbarButtonColorFor: aButton [
 ]
 
 { #category : #colors }
-UIThemeColorConfigurator >> taskbarButtonLabelColorFor: anObject [
+UIThemeColorConfigurator >> taskbarButtonLabelColorFor: aButton [
 
-	^ self subclassResponsibility
+	^ aButton model isActive
+		ifTrue: [ Color black ]
+		ifFalse: [ Color gray darker ]
 ]
 
 { #category : #colors }
@@ -478,10 +487,16 @@ UIThemeColorConfigurator >> textEditorNormalFillStyleFor: anObject [
 	^ self subclassResponsibility
 ]
 
-{ #category : #colors }
-UIThemeColorConfigurator >> treeLineDashes [
+{ #category : #accessing }
+UIThemeColorConfigurator >> themeSettings [
 
-	^ self subclassResponsibility
+	^ themeSettings
+]
+
+{ #category : #accessing }
+UIThemeColorConfigurator >> themeSettings: anObject [
+
+	themeSettings := anObject
 ]
 
 { #category : #colors }
@@ -529,7 +544,7 @@ UIThemeColorConfigurator >> windowColor [
 { #category : #colors }
 UIThemeColorConfigurator >> windowColorFor: anObject [
 
-	^ self subclassResponsibility
+	^ themeSettings windowColor
 ]
 
 { #category : #colors }
@@ -541,5 +556,5 @@ UIThemeColorConfigurator >> windowShadowColor [
 { #category : #colors }
 UIThemeColorConfigurator >> worldMainDockingBarColorFor: anObject [
 
-	^ self subclassResponsibility
+	^ themeSettings derivedMenuColor
 ]
