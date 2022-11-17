@@ -140,6 +140,14 @@ PharoDarkTheme2 >> classExtensionColor [
 	^ Color gray lighter lighter
 ]
 
+{ #category : #initialization }
+PharoDarkTheme2 >> colorPaletteForTheme [
+
+	^ DarkThemeColorConfigurator new
+		themeSettings: settings;
+		yourself
+]
+
 { #category : #configure }
 PharoDarkTheme2 >> configureMorphTreeMorph: aMorph [
 	self flag: 'not returning an object color'.
