@@ -36,6 +36,7 @@ DarkThemeColorConfigurator >> baseColor [
 
 { #category : #accessing }
 DarkThemeColorConfigurator >> basePassiveBackgroundColor [
+
 	^ Color darkGray
 ]
 
