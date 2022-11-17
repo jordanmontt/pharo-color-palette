@@ -429,10 +429,8 @@ UITheme2 >> buttonColorFor: aButton [
 
 	"Answer the colour for the given button."
 
-	self flag: 'yu son of a bitch wa ta fac'.
-	^ self settings standardColorsOnly
-		ifTrue: [ self buttonColor ]
-		ifFalse: [ aButton colorToUse ]
+	^ self settings standardColorsOnly ifTrue: [ self buttonColor ]
+		  ifFalse: [ aButton colorToUse ]
 ]
 
 { #category : #'fill-styles - buttons' }
@@ -2162,7 +2160,7 @@ UITheme2 >> dropListNormalBorderStyleFor: aDropList [
 UITheme2 >> dropListNormalFillStyleFor: aDropList [
 	"Return the normal fillStyle for the given drop list."
 	
-	^ SolidFillStyle color: Color white
+	^ colorPalette dropListNormalFillStyleFor: aDropList
 ]
 
 { #category : #'border-styles' }
@@ -5000,11 +4998,9 @@ UITheme2 >> scrollbarColor [
 UITheme2 >> scrollbarColorFor: aScrollbar [
 
 	"Answer the colour for the given scrollbar."
-	self flag: 'whaat'.
-	^ self settings standardColorsOnly
-		ifTrue: [ self settings scrollbarColor ]
-		ifFalse: [ aScrollbar lastPaneColor
-			ifNil: [ Color white ] ]
+
+	^ self settings standardColorsOnly ifTrue: [ self settings scrollbarColor ]
+		  ifFalse: [ aScrollbar lastPaneColor ifNil: [ Color white ] ]
 ]
 
 { #category : #'fill-styles - scrollbars' }
@@ -5423,9 +5419,10 @@ UITheme2 >> sliderNormalBorderStyleFor: aSlider [
 
 { #category : #'fill-styles' }
 UITheme2 >> sliderNormalFillStyleFor: aSlider [
+
 	"Return the normal fillStyle for the given slider."
-	
-	^ SolidFillStyle color: Color white
+
+	^ colorPalette sliderNormalFillStyleFor: aSlider
 ]
 
 { #category : #accessing }
@@ -5595,14 +5592,10 @@ UITheme2 >> taskbarButtonColorFor: aButton [
 UITheme2 >> taskbarButtonLabelColorFor: aButton [
 
 	"Answer the colour for the label of the given taskbar button."
-	
-	self flag: 'whaat'.
-	^ aButton model
-		ifNil: [ super taskbarButtonLabelColorFor: aButton ]
-		ifNotNil: [:win |
-			win isActive
-				ifTrue: [ Color black ]
-				ifFalse: [ Color gray darker ] ]
+
+	^ aButton model ifNil: [ super taskbarButtonLabelColorFor: aButton ] ifNotNil: [ :win | 
+		  win isActive ifTrue: [ Color black ]
+			  ifFalse: [ Color gray darker ] ]
 ]
 
 { #category : #'fill-styles - taskbar' }
@@ -5916,8 +5909,10 @@ UITheme2 >> treeLineColorsFrom: aColor [
 
 	"Answer the colours to use for the tree lines.
 	The given colour is the preferred colour."
-	self flag: 'wooooowwsdsa'.
-	^ { aColor . Color transparent }
+
+	^ { 
+		  aColor.
+		  Color transparent }
 ]
 
 { #category : #accessing }

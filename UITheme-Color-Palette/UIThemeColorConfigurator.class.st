@@ -180,7 +180,7 @@ UIThemeColorConfigurator >> disabledTextColor [
 { #category : #colors }
 UIThemeColorConfigurator >> dropListNormalFillStyleFor: anObject [
 
-	^ self subclassResponsibility
+	^ SolidFillStyle color: Color white
 ]
 
 { #category : #colors }
@@ -388,7 +388,7 @@ UIThemeColorConfigurator >> selectionTextColor [
 { #category : #colors }
 UIThemeColorConfigurator >> sliderNormalFillStyleFor: anObject [
 
-	^ self subclassResponsibility
+	^ SolidFillStyle color: Color white
 ]
 
 { #category : #colors }
