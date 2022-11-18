@@ -2350,8 +2350,10 @@ UITheme2 >> initialize [
 		settings: self defaultSettings.
 	self windowActiveDropShadowStyle: #diffuse.
 	
-	colorPalette := self class colorConfiguratorClass new
-		themeSettings: settings;
+	colorPalette := UIThemePalette new
+		colorConfigurator: (self class colorConfiguratorClass new
+			themeSettings: settings;
+			yourself);
 		yourself
 ]
 
