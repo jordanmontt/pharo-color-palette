@@ -31,17 +31,14 @@ UITheme2 class >> allThemeClasses [
 
 { #category : #accessing }
 UITheme2 class >> baseColor [
-	self subclassResponsibility
+
+	^ self colorConfiguratorClass new baseColor
 ]
 
 { #category : #accessing }
-UITheme2 class >> basePassiveBackgroundColor [ 
-	^ self subclassResponsibility
-]
+UITheme2 class >> baseSelectionColor [
 
-{ #category : #accessing }
-UITheme2 class >> baseSelectionColor [ 
-	^ self subclassResponsibility
+	^ self colorConfiguratorClass new baseSelectionColor
 ]
 
 { #category : #query }
@@ -64,6 +61,12 @@ UITheme2 class >> cleanUp [
 
 	"avoid old references to morphs that should be garbage-collected"
 	UITheme current focusIndicator: nil.
+]
+
+{ #category : #configuration }
+UITheme2 class >> colorConfiguratorClass [
+
+	^ self subclassResponsibility
 ]
 
 { #category : #accessing }
@@ -114,11 +117,6 @@ UITheme2 class >> currentSettings [
 ]
 
 { #category : #accessing }
-UITheme2 class >> darkBaseColor [
-	self subclassResponsibility
-]
-
-{ #category : #accessing }
 UITheme2 class >> defaultSettings [
 	"Answer the default settings for the theme."
 	
@@ -158,12 +156,14 @@ UITheme2 class >> isCurrent [
 
 { #category : #accessing }
 UITheme2 class >> lightBaseColor [
-	self subclassResponsibility
+
+	^ self colorConfiguratorClass new baseSelectionColor
 ]
 
 { #category : #accessing }
-UITheme2 class >> lightSelectionColor [ 
-	^ self subclassResponsibility
+UITheme2 class >> lightSelectionColor [
+
+	^ self colorConfiguratorClass new lightSelectionColor
 ]
 
 { #category : #accessing }
@@ -239,8 +239,9 @@ UITheme2 class >> themeName [
 ]
 
 { #category : #accessing }
-UITheme2 class >> veryLightSelectionColor [ 
-	^ self subclassResponsibility
+UITheme2 class >> veryLightSelectionColor [
+
+	^ self lightSelectionColor muchLighter
 ]
 
 { #category : #services }
@@ -328,7 +329,8 @@ UITheme2 >> baseColorFor: aWidget [
 
 { #category : #private }
 UITheme2 >> basePassiveBackgroundColorFor: aButton [
-	^ self class basePassiveBackgroundColor
+
+	^ colorPalette basePassiveBackgroundColor
 ]
 
 { #category : #'fill-styles - scrollbars' }
@@ -341,7 +343,8 @@ UITheme2 >> baseScrollbarColorFor: aScrollbar [
 
 { #category : #private }
 UITheme2 >> baseSelectionColorFor: aButton [
-	^ self class baseSelectionColor
+
+	^ colorPalette baseSelectionColor
 ]
 
 { #category : #scrollbars }
@@ -1168,12 +1171,6 @@ UITheme2 >> classExtensionColor [
 	^ colorPalette classExtensionColor
 ]
 
-{ #category : #initialization }
-UITheme2 >> colorPaletteForTheme [
-
-	^ self subclassResponsibility
-]
-
 { #category : #'label-styles' }
 UITheme2 >> configureDialogWindowLabelAreaFrameFor: aWindow [
 	"Configure the layout frame for the label area for the given dialog window."
@@ -1731,7 +1728,8 @@ UITheme2 >> darkBaseColor [
 
 { #category : #private }
 UITheme2 >> darkBaseColorFor: aButton [
-	^ self class darkBaseColor
+
+	^ self darkBaseColor
 ]
 
 { #category : #defaults }
@@ -2351,7 +2349,10 @@ UITheme2 >> initialize [
 		initializeForms;
 		settings: self defaultSettings.
 	self windowActiveDropShadowStyle: #diffuse.
-	colorPalette := self colorPaletteForTheme
+	
+	colorPalette := self class colorConfiguratorClass new
+		themeSettings: settings;
+		yourself
 ]
 
 { #category : #initialization }
@@ -2455,12 +2456,20 @@ UITheme2 >> lightBaseColor [
 
 { #category : #private }
 UITheme2 >> lightColorFor: aButton [
-	^ self class lightBaseColor
+
+	^ self lightBaseColor
+]
+
+{ #category : #accessing }
+UITheme2 >> lightSelectionColor [
+
+	^ colorPalette lightSelectionColor
 ]
 
 { #category : #private }
 UITheme2 >> lightSelectionColorFor: aMorph [
-	^ self class lightSelectionColor
+
+	^ self lightSelectionColor
 ]
 
 { #category : #'accessing - colors' }

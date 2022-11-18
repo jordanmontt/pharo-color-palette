@@ -70,7 +70,7 @@ UIThemeColorConfigurator >> borderColor [
 { #category : #colors }
 UIThemeColorConfigurator >> buttonColor [
 
-	^ self subclassResponsibility
+	^ themeSettings buttonColor
 ]
 
 { #category : #colors }
@@ -540,7 +540,7 @@ UIThemeColorConfigurator >> windowActiveLabelFillStyleFor: anObject [
 { #category : #colors }
 UIThemeColorConfigurator >> windowColor [
 
-	^ self subclassResponsibility
+	^ themeSettings windowColor
 ]
 
 { #category : #colors }

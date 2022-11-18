@@ -4,41 +4,18 @@ Class {
 	#category : #'UITheme-Color-Palette'
 }
 
-{ #category : #accessing }
-PharoDarkTheme2 class >> baseColor [
-	^ Color veryDarkGray
-]
+{ #category : #configuration }
+PharoDarkTheme2 class >> colorConfiguratorClass [
 
-{ #category : #accessing }
-PharoDarkTheme2 class >> basePassiveBackgroundColor [
-	^ Color darkGray
-]
-
-{ #category : #accessing }
-PharoDarkTheme2 class >> baseSelectionColor [
-	^ Color r: 97 g: 163 b: 225 range: 255
-]
-
-{ #category : #accessing }
-PharoDarkTheme2 class >> darkBaseColor [
-	^ Color veryDarkGray
+	^ DarkThemeColorConfigurator
 ]
 
 { #category : #accessing }
 PharoDarkTheme2 class >> isAbstract [
+
 	"Answer whether the receiver is considered to be abstract."
 
-	^false
-]
-
-{ #category : #accessing }
-PharoDarkTheme2 class >> lightBaseColor [
-	^ Color darkGray
-]
-
-{ #category : #accessing }
-PharoDarkTheme2 class >> lightSelectionColor [
-	^ Color r: 175 g: 213 b: 250 range: 255
+	^ false
 ]
 
 { #category : #settings }
@@ -50,12 +27,8 @@ PharoDarkTheme2 class >> setPreferredPreferences [
 
 { #category : #accessing }
 PharoDarkTheme2 class >> themeName [
-	^ 'Pharo Dark'
-]
 
-{ #category : #accessing }
-PharoDarkTheme2 class >> veryLightSelectionColor [
-	^ self lightSelectionColor muchLighter
+	^ 'Pharo Dark'
 ]
 
 { #category : #'border-styles - buttons' }
@@ -104,14 +77,6 @@ PharoDarkTheme2 >> buttonSelectedFillStyleFor: aButton [
 	"Return the normal button fillStyle for the given button."
 
 	^ SolidFillStyle color: self selectionColor
-]
-
-{ #category : #initialization }
-PharoDarkTheme2 >> colorPaletteForTheme [
-
-	^ DarkThemeColorConfigurator new
-		themeSettings: settings;
-		yourself
 ]
 
 { #category : #configure }

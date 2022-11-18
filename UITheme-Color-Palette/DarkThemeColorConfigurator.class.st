@@ -160,7 +160,7 @@ DarkThemeColorConfigurator >> lightBaseColor [
 	^ Color darkGray
 ]
 
-{ #category : #accessing }
+{ #category : #colors }
 DarkThemeColorConfigurator >> lightSelectionColor [
 
 	^ Color r: 175 g: 213 b: 250 range: 255
