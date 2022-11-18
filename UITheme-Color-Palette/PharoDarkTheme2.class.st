@@ -159,7 +159,7 @@ PharoDarkTheme2 >> labelDisabledColorFor: aLabel [
 			  ifFalse: [ aLabel owner color muchLighter ] ]
 ]
 
-{ #category : #'accessing - colors' }
+{ #category : #accessing }
 PharoDarkTheme2 >> menuBorderWidth [
 
 	^ self borderWidth * self displayScaleFactor
@@ -173,7 +173,7 @@ PharoDarkTheme2 >> newRadioMarkerForm [
 	^ Form extent: 12 @ 12 depth: 32
 ]
 
-{ #category : #'border-styles - scrollbars' }
+{ #category : #'fill-styles - scrollbars' }
 PharoDarkTheme2 >> scrollbarNormalFillStyleFor: aScrollbar [
 
 	"Return the normal scrollbar fillStyle for the given scrollbar."
@@ -181,7 +181,7 @@ PharoDarkTheme2 >> scrollbarNormalFillStyleFor: aScrollbar [
 	^ SolidFillStyle color: self backgroundColor lighter
 ]
 
-{ #category : #'border-styles - scrollbars' }
+{ #category : #'fill-styles - scrollbars' }
 PharoDarkTheme2 >> scrollbarPressedThumbFillStyleFor: aScrollbar [
 
 	"Return the normal scrollbar button fillStyle for the given scrollbar."
@@ -189,7 +189,7 @@ PharoDarkTheme2 >> scrollbarPressedThumbFillStyleFor: aScrollbar [
 	^ self buttonSelectedFillStyleFor: aScrollbar
 ]
 
-{ #category : #defaults }
+{ #category : #accessing }
 PharoDarkTheme2 >> shStyleTableName [
 
 	^ #darkStyleTable
@@ -207,7 +207,7 @@ PharoDarkTheme2 >> taskbarItemDisabledBorderStyleFor: aButton [
 	^ self taskbarItemNormalBorderStyleFor: aButton
 ]
 
-{ #category : #'border-styles - taskbar' }
+{ #category : #'fill-styles - taskbar' }
 PharoDarkTheme2 >> taskbarItemDisabledFillStyleFor: aButton [
 
 	"Return the disabled taskbar item fillStyle for the given color."

@@ -55,6 +55,12 @@ UIThemeColorConfigurator >> basePassiveBackgroundColor [
 	^ self subclassResponsibility
 ]
 
+{ #category : #'basic-colors' }
+UIThemeColorConfigurator >> baseScrollbarColorFor: aScrollbar [
+
+	^ aScrollbar lastPaneColor ifNil: [ self scrollbarColor ]
+]
+
 { #category : #colors }
 UIThemeColorConfigurator >> baseSelectionColor [
 
@@ -355,6 +361,12 @@ UIThemeColorConfigurator >> scrollbarColorFor: aScrollbar [
 		ifFalse: [ aScrollbar lastPaneColor ifNil: [ Color white ] ]
 ]
 
+{ #category : #'basic-colors' }
+UIThemeColorConfigurator >> scrollbarImageColorFor: aScrollbar [
+
+	^ (self baseScrollbarColorFor: aScrollbar) darker
+]
+
 { #category : #colors }
 UIThemeColorConfigurator >> secondarySelectionColor [
 
@@ -499,6 +511,13 @@ UIThemeColorConfigurator >> themeSettings [
 UIThemeColorConfigurator >> themeSettings: anObject [
 
 	themeSettings := anObject
+]
+
+{ #category : #'basic-colors' }
+UIThemeColorConfigurator >> treeLineColorsFrom: aColor [
+
+	self flag: 'This is a list'.
+	^ { aColor. Color transparent }
 ]
 
 { #category : #colors }

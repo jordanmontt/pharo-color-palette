@@ -34,7 +34,7 @@ DarkThemeColorConfigurator >> baseColor [
 	^ Color veryDarkGray
 ]
 
-{ #category : #accessing }
+{ #category : #colors }
 DarkThemeColorConfigurator >> basePassiveBackgroundColor [
 
 	^ Color darkGray
@@ -310,7 +310,7 @@ DarkThemeColorConfigurator >> unfocusedSelectionColor [
 	^ self secondarySelectionColor
 ]
 
-{ #category : #accessing }
+{ #category : #colors }
 DarkThemeColorConfigurator >> veryLightSelectionColor [
 
 	^ self lightSelectionColor muchLighter

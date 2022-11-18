@@ -51,9 +51,10 @@ UITheme2 class >> beCurrent [
 
 { #category : #accessing }
 UITheme2 class >> builder [
+
 	"Answer a morph that has the TEasilyThemed trait."
 
-	^Builder ifNil: [Builder := self newBuilder. Builder]
+	^ Builder ifNil: [ Builder := self newBuilder. Builder ]
 ]
 
 { #category : #cleanup }
@@ -327,21 +328,21 @@ UITheme2 >> baseColorFor: aWidget [
 	^ colorPalette baseColorFor: aWidget
 ]
 
-{ #category : #private }
+{ #category : #'accessing - colors' }
 UITheme2 >> basePassiveBackgroundColorFor: aButton [
 
 	^ colorPalette basePassiveBackgroundColor
 ]
 
-{ #category : #'fill-styles - scrollbars' }
+{ #category : #'accessing - colors' }
 UITheme2 >> baseScrollbarColorFor: aScrollbar [
+
 	"Return the scrollbar last pane colour or that of our settings if unavailable"
-	
-	^ aScrollbar lastPaneColor 
-		ifNil: [ self scrollbarColor ]
+
+	^ colorPalette baseScrollbarColorFor: aScrollbar
 ]
 
-{ #category : #private }
+{ #category : #'accessing - colors' }
 UITheme2 >> baseSelectionColorFor: aButton [
 
 	^ colorPalette baseSelectionColor
@@ -432,8 +433,7 @@ UITheme2 >> buttonColorFor: aButton [
 
 	"Answer the colour for the given button."
 
-	^ self settings standardColorsOnly ifTrue: [ self buttonColor ]
-		  ifFalse: [ aButton colorToUse ]
+	^ colorPalette buttonColorFor: aButton
 ]
 
 { #category : #'fill-styles - buttons' }
@@ -1726,7 +1726,7 @@ UITheme2 >> darkBaseColor [
 	^ colorPalette darkBaseColor
 ]
 
-{ #category : #private }
+{ #category : #'accessing - colors' }
 UITheme2 >> darkBaseColorFor: aButton [
 
 	^ self darkBaseColor
@@ -2454,7 +2454,7 @@ UITheme2 >> lightBaseColor [
 	^ colorPalette lightBaseColor
 ]
 
-{ #category : #private }
+{ #category : #'accessing - colors' }
 UITheme2 >> lightColorFor: aButton [
 
 	^ self lightBaseColor
@@ -2466,7 +2466,7 @@ UITheme2 >> lightSelectionColor [
 	^ colorPalette lightSelectionColor
 ]
 
-{ #category : #private }
+{ #category : #'accessing - colors' }
 UITheme2 >> lightSelectionColorFor: aMorph [
 
 	^ self lightSelectionColor
@@ -5008,15 +5008,15 @@ UITheme2 >> scrollbarColorFor: aScrollbar [
 
 	"Answer the colour for the given scrollbar."
 
-	^ self settings standardColorsOnly ifTrue: [ self settings scrollbarColor ]
-		  ifFalse: [ aScrollbar lastPaneColor ifNil: [ Color white ] ]
+	^ colorPalette scrollbarColorFor: aScrollbar
 ]
 
-{ #category : #'fill-styles - scrollbars' }
+{ #category : #'accessing - colors' }
 UITheme2 >> scrollbarImageColorFor: aScrollbar [
+
 	"Return the scrollbar image colour (on buttons) for the given scrollbar."
-	
-	^(self baseScrollbarColorFor: aScrollbar) darker
+
+	^ colorPalette scrollbarImageColorFor: aScrollbar
 ]
 
 { #category : #defaults }
@@ -5602,9 +5602,7 @@ UITheme2 >> taskbarButtonLabelColorFor: aButton [
 
 	"Answer the colour for the label of the given taskbar button."
 
-	^ aButton model ifNil: [ super taskbarButtonLabelColorFor: aButton ] ifNotNil: [ :win | 
-		  win isActive ifTrue: [ Color black ]
-			  ifFalse: [ Color gray darker ] ]
+	^ colorPalette taskbarButtonLabelColorFor: aButton
 ]
 
 { #category : #'fill-styles - taskbar' }
@@ -5919,9 +5917,7 @@ UITheme2 >> treeLineColorsFrom: aColor [
 	"Answer the colours to use for the tree lines.
 	The given colour is the preferred colour."
 
-	^ { 
-		  aColor.
-		  Color transparent }
+	^ colorPalette treeLineColorsFrom: aColor
 ]
 
 { #category : #accessing }
@@ -6051,9 +6047,10 @@ UITheme2 >> veryLightFillStyleFor: aMorph height: anInteger [
 	^ SolidFillStyle color: (self veryLightSelectionColorFor: aMorph)
 ]
 
-{ #category : #private }
+{ #category : #'accessing - colors' }
 UITheme2 >> veryLightSelectionColorFor: aMorph [
-	^ self class veryLightSelectionColor
+
+	^ colorPalette veryLightSelectionColor
 ]
 
 { #category : #'accessing - colors' }

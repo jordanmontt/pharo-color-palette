@@ -4,20 +4,10 @@ Class {
 	#category : #'UITheme-Color-Palette'
 }
 
-{ #category : #accessing }
-PharoLightTheme2 class >> basePassiveBackgroundColor [
-	^ Color r: 245 g: 245 b: 245 range: 255
-]
-
 { #category : #configuration }
 PharoLightTheme2 class >> colorConfiguratorClass [
 
 	^ LightThemeColorConfigurator
-]
-
-{ #category : #accessing }
-PharoLightTheme2 class >> darkBaseColor [
-	^ Color r: 200 g: 200 b: 200 range: 255
 ]
 
 { #category : #testing }
