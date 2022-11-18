@@ -58,7 +58,7 @@ PharoDarkTheme2 class >> veryLightSelectionColor [
 	^ self lightSelectionColor muchLighter
 ]
 
-{ #category : #'fill-styles - buttons' }
+{ #category : #'border-styles - buttons' }
 PharoDarkTheme2 >> buttonDisabledBorderStyleFor: aButton [
 
 	"Return the disabled button fillStyle for the given color."
