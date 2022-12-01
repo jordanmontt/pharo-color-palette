@@ -18,13 +18,6 @@ PharoLightTheme2 class >> isAbstract [
 	^ false
 ]
 
-{ #category : #settings }
-PharoLightTheme2 class >> setPreferredPreferences [
-	"NECPreferences 
-		expandPrefixes: true;
-		popupShowWithShortcut: Character tab asShortcut."
-]
-
 { #category : #accessing }
 PharoLightTheme2 class >> themeName [
 

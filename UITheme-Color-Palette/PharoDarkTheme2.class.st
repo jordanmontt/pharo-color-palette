@@ -18,13 +18,6 @@ PharoDarkTheme2 class >> isAbstract [
 	^ false
 ]
 
-{ #category : #settings }
-PharoDarkTheme2 class >> setPreferredPreferences [
-	"NECPreferences 
-		expandPrefixes: true;
-		popupShowWithShortcut: Character tab asShortcut."
-]
-
 { #category : #accessing }
 PharoDarkTheme2 class >> themeName [
 
@@ -171,14 +164,6 @@ PharoDarkTheme2 >> newRadioMarkerForm [
 	"Answer a new checkbox marker form."
 
 	^ Form extent: 12 @ 12 depth: 32
-]
-
-{ #category : #'fill-styles - scrollbars' }
-PharoDarkTheme2 >> scrollbarNormalFillStyleFor: aScrollbar [
-
-	"Return the normal scrollbar fillStyle for the given scrollbar."
-
-	^ SolidFillStyle color: self backgroundColor lighter
 ]
 
 { #category : #'fill-styles - scrollbars' }

@@ -87,6 +87,24 @@ UIThemePalette >> buttonColorFor: aButton [
 ]
 
 { #category : #colors }
+UIThemePalette >> buttonColouredMiddleColor [
+
+	^ paletteDictionary at: #buttonColouredMiddleColor ifAbsentPut: [ colorConfigurator buttonColouredMiddleColor ]
+]
+
+{ #category : #colors }
+UIThemePalette >> buttonPlainMiddleColor [
+
+	^ paletteDictionary at: #buttonPlainMiddleColor ifAbsentPut: [ colorConfigurator buttonPlainMiddleColor ]
+]
+
+{ #category : #colors }
+UIThemePalette >> calypsoFrozenItemColor [
+
+	^ paletteDictionary at: #calypsoFrozenItemColor ifAbsentPut: [ colorConfigurator calypsoFrozenItemColor ]
+]
+
+{ #category : #colors }
 UIThemePalette >> caretColor [
 
 	^ paletteDictionary at: #caretColor ifAbsentPut: [ colorConfigurator caretColor ]
@@ -218,6 +236,31 @@ UIThemePalette >> ghostTextColor [
 	^ paletteDictionary at: #ghostTextColor ifAbsentPut: [ colorConfigurator ghostTextColor ]
 ]
 
+{ #category : #colors }
+UIThemePalette >> growlBorderColorFor: aGrowlMorph [
+
+	^ paletteDictionary at: #growlBorderColorFor: ifAbsentPut: [ colorConfigurator growlBorderColorFor: aGrowlMorph ]
+]
+
+{ #category : #colors }
+UIThemePalette >> growlContentsColorFor: aGrowlMorph [
+
+	^ paletteDictionary at: #growlContentsColorFor:
+		  ifAbsentPut: [ colorConfigurator growlContentsColorFor: aGrowlMorph ]
+]
+
+{ #category : #'as yet unclassified' }
+UIThemePalette >> growlFillColorFor: aGrowlMorph [ 
+
+	^ paletteDictionary at: #growlFillColorFor: ifAbsentPut: [ colorConfigurator growlFillColorFor: aGrowlMorph ]
+]
+
+{ #category : #colors }
+UIThemePalette >> growlLabelColorFor: aGrowlMorph [
+
+	^ paletteDictionary at: #growlLabelColorFor: ifAbsentPut: [ colorConfigurator growlLabelColorFor: aGrowlMorph ]
+]
+
 { #category : #initialization }
 UIThemePalette >> initialize [
 
@@ -322,6 +365,12 @@ UIThemePalette >> menuTitleColor [
 ]
 
 { #category : #colors }
+UIThemePalette >> modalBackdropColor [
+
+	^ paletteDictionary at: #modalBackdropColor ifAbsentPut: [ colorConfigurator modalBackdropColor ]
+]
+
+{ #category : #colors }
 UIThemePalette >> mouseOverColor [
 
 	^ paletteDictionary at: #mouseOverColor ifAbsentPut: [ colorConfigurator mouseOverColor ]
@@ -358,6 +407,12 @@ UIThemePalette >> progressBarProgressColorFor: anObject [
 ]
 
 { #category : #colors }
+UIThemePalette >> resizerGripNormalFillStyleFor: aResizer [
+
+	^ paletteDictionary at: #resizerGripNormalFillStyleFor: ifAbsentPut: [ colorConfigurator resizerGripNormalFillStyleFor: aResizer ]
+]
+
+{ #category : #colors }
 UIThemePalette >> scrollbarColor [
 
 	^ paletteDictionary at: #scrollbarColor ifAbsentPut: [ colorConfigurator scrollbarColor ]
@@ -373,6 +428,12 @@ UIThemePalette >> scrollbarColorFor: aScrollbar [
 UIThemePalette >> scrollbarImageColorFor: aScrollbar [
 
 	^ paletteDictionary at: #scrollbarImageColorFor: ifAbsentPut: [ colorConfigurator scrollbarImageColorFor: aScrollbar ]
+]
+
+{ #category : #colors }
+UIThemePalette >> scrollbarNormalFillStyleFor: aScrollbar [
+
+	^ paletteDictionary at: #scrollbarNormalFillStyleFor: ifAbsentPut: [ colorConfigurator scrollbarNormalFillStyleFor: aScrollbar ]
 ]
 
 { #category : #colors }
@@ -508,6 +569,12 @@ UIThemePalette >> textEditorNormalFillStyleFor: anObject [
 ]
 
 { #category : #colors }
+UIThemePalette >> textFieldNormalFillStyleFor: aTextField [
+
+	^ paletteDictionary at: #textFieldNormalFillStyleFor: ifAbsentPut: [ colorConfigurator textFieldNormalFillStyleFor: aTextField ]
+]
+
+{ #category : #colors }
 UIThemePalette >> themeSettings [
 
 	^ paletteDictionary at: #themeSettings ifAbsentPut: [ colorConfigurator themeSettings ]
@@ -571,6 +638,12 @@ UIThemePalette >> windowColor [
 UIThemePalette >> windowColorFor: anObject [
 
 	^ paletteDictionary at: #windowColorFor: ifAbsentPut: [ colorConfigurator windowColorFor: anObject  ]
+]
+
+{ #category : #colors }
+UIThemePalette >> windowEdgeNormalFillStyleFor: anEdgeGrip [
+
+	^ paletteDictionary at: #windowEdgeNormalFillStyleFor: ifAbsentPut: [ colorConfigurator windowEdgeNormalFillStyleFor: anEdgeGrip ]
 ]
 
 { #category : #colors }

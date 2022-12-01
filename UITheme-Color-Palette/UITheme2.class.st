@@ -14,9 +14,6 @@ Class {
 		'Builder',
 		'Current'
 	],
-	#classInstVars : [
-		'defaultSettings'
-	],
 	#category : #'UITheme-Color-Palette'
 }
 
@@ -27,18 +24,6 @@ UITheme2 class >> allThemeClasses [
 
 	^(self allSubclasses reject: [:c | c isAbstract]) asSortedCollection: [:a :b |
 		a themeName <= b themeName]
-]
-
-{ #category : #accessing }
-UITheme2 class >> baseColor [
-
-	^ self colorConfiguratorClass new baseColor
-]
-
-{ #category : #accessing }
-UITheme2 class >> baseSelectionColor [
-
-	^ self colorConfiguratorClass new baseSelectionColor
 ]
 
 { #category : #query }
@@ -61,7 +46,7 @@ UITheme2 class >> builder [
 UITheme2 class >> cleanUp [
 
 	"avoid old references to morphs that should be garbage-collected"
-	UITheme current focusIndicator: nil.
+	self current focusIndicator: nil.
 ]
 
 { #category : #configuration }
@@ -110,29 +95,6 @@ UITheme2 class >> current: aUITheme [
 	SystemAnnouncer uniqueInstance announce: UIThemeChanged
 ]
 
-{ #category : #accessing }
-UITheme2 class >> currentSettings [
-	"Answer the current ui theme settings."
-
-	^ self current settings
-]
-
-{ #category : #accessing }
-UITheme2 class >> defaultSettings [
-	"Answer the default settings for the theme."
-	
-	^defaultSettings ifNil: [
-		self defaultSettings: self newDefaultSettings.
-		defaultSettings]
-]
-
-{ #category : #accessing }
-UITheme2 class >> defaultSettings: aThemeSettings [
-	"Set the default settings for the theme."
-	
-	defaultSettings := aThemeSettings
-]
-
 { #category : #'class initialization' }
 UITheme2 class >> initialize [
 
@@ -150,21 +112,16 @@ UITheme2 class >> isAbstract [
 
 { #category : #testing }
 UITheme2 class >> isCurrent [
+
 	"Answer whether an instance of the receiver is the current theme."
 
-	^Current class == self
+	^ Current class == self
 ]
 
 { #category : #accessing }
 UITheme2 class >> lightBaseColor [
 
 	^ self colorConfiguratorClass new baseSelectionColor
-]
-
-{ #category : #accessing }
-UITheme2 class >> lightSelectionColor [
-
-	^ self colorConfiguratorClass new lightSelectionColor
 ]
 
 { #category : #accessing }
@@ -181,50 +138,11 @@ UITheme2 class >> newDefault [
 	^self new
 ]
 
-{ #category : #accessing }
-UITheme2 class >> newDefaultSettings [
-	self setPreferredPreferences.
-	
-	^ThemeSettings new
-		buttonColor: Color gray;
-		scrollbarColor: Color gray;
-		menuColor: self baseColor;
-		menuTitleColor: self baseColor;
-		windowColor: self baseColor;
-		selectionColor: self lightSelectionColor;
-		menuSelectionColor: self baseSelectionColor;
-		progressBarColor: self baseColor;
-		standardColorsOnly: true;
-		autoSelectionColor: false;
-		preferRoundCorner: false;
-		fadedBackgroundWindows: false;
-		flatMenu: true
-]
-
-{ #category : #accessing }
-UITheme2 class >> resetAllDefaultSettings [
-	"Reset the default settings of all themes"
-	"self resetAllDefaultSettings"
-	self withAllSubclassesDo: [:cls | cls defaultSettings: nil]
-]
-
 { #category : #'initialize-release' }
 UITheme2 class >> resetBuilder [
 	<script>
 	
 	Builder := nil
-]
-
-{ #category : #accessing }
-UITheme2 class >> resetDefaultSettings [
-	"Reset the default settings to use the original values."
-
-	self defaultSettings: nil
-]
-
-{ #category : #settings }
-UITheme2 class >> setPreferredPreferences [ 
-	self subclassResponsibility
 ]
 
 { #category : #accessing }
@@ -237,12 +155,6 @@ UITheme2 class >> themeName [
 	"Answer the friendly name of the theme."
 
 	self subclassResponsibility
-]
-
-{ #category : #accessing }
-UITheme2 class >> veryLightSelectionColor [
-
-	^ self lightSelectionColor muchLighter
 ]
 
 { #category : #services }
@@ -329,6 +241,12 @@ UITheme2 >> baseColorFor: aWidget [
 ]
 
 { #category : #'accessing - colors' }
+UITheme2 >> basePassiveBackgroundColor [
+
+	^ colorPalette basePassiveBackgroundColor
+]
+
+{ #category : #'accessing - colors' }
 UITheme2 >> basePassiveBackgroundColorFor: aButton [
 
 	^ colorPalette basePassiveBackgroundColor
@@ -340,6 +258,12 @@ UITheme2 >> baseScrollbarColorFor: aScrollbar [
 	"Return the scrollbar last pane colour or that of our settings if unavailable"
 
 	^ colorPalette baseScrollbarColorFor: aScrollbar
+]
+
+{ #category : #'accessing - colors' }
+UITheme2 >> baseSelectionColor [
+
+	^ colorPalette baseSelectionColor
 ]
 
 { #category : #'accessing - colors' }
@@ -457,9 +381,8 @@ UITheme2 >> buttonColouredFillStyleFor: aButton [
 
 { #category : #'fill-styles - buttons' }
 UITheme2 >> buttonColouredMiddleColor [
-	"Return the middle area colour for a coloured button fillStyle."
-	
-	^Color r: 102 g: 127 b: 168 range: 255
+
+	^ colorPalette buttonColouredMiddleColor
 ]
 
 { #category : #'border-styles - buttons' }
@@ -625,9 +548,8 @@ UITheme2 >> buttonPlainFillStyleFor: aButton [
 
 { #category : #'fill-styles - buttons' }
 UITheme2 >> buttonPlainMiddleColor [
-	"Return the middle area colour for a plain button fillStyle."
-	
-	^Color r: 211 g: 211 b: 211 range: 255
+
+	^ colorPalette buttonPlainMiddleColor
 ]
 
 { #category : #'border-styles - buttons' }
@@ -1676,7 +1598,8 @@ UITheme2 >> createMenuBoxFor: aSystemWindow [
 
 { #category : #accessing }
 UITheme2 >> currentSettings [
-	^ self class currentSettings
+
+	^ settings
 ]
 
 { #category : #services }
@@ -1757,9 +1680,21 @@ UITheme2 >> defaultMenuTitleColor [
 
 { #category : #initialization }
 UITheme2 >> defaultSettings [
-	"Answer the default settings."
-
-	^self class defaultSettings copy
+	
+	^ ThemeSettings new
+		buttonColor: Color gray;
+		scrollbarColor: Color gray;
+		menuColor: self baseColor;
+		menuTitleColor: self baseColor;
+		windowColor: self baseColor;
+		selectionColor: self lightSelectionColor;
+		menuSelectionColor: self baseSelectionColor;
+		progressBarColor: self baseColor;
+		standardColorsOnly: true;
+		autoSelectionColor: false;
+		preferRoundCorner: false;
+		fadedBackgroundWindows: false;
+		flatMenu: true
 ]
 
 { #category : #initialization }
@@ -2345,9 +2280,8 @@ UITheme2 >> initialize [
 	"Initialize the receiver."
 
 	super initialize.
-	self
-		initializeForms;
-		settings: self defaultSettings.
+	self initializeForms.
+	self initializeDefaultSettings.
 	self windowActiveDropShadowStyle: #diffuse.
 	
 	colorPalette := UIThemePalette new
@@ -2355,6 +2289,12 @@ UITheme2 >> initialize [
 			themeSettings: settings;
 			yourself);
 		yourself
+]
+
+{ #category : #initialization }
+UITheme2 >> initializeDefaultSettings [
+
+	settings := self defaultSettings
 ]
 
 { #category : #initialization }
@@ -4941,11 +4881,8 @@ UITheme2 >> radioButtonSelectedForm [
 
 { #category : #'fill-styles' }
 UITheme2 >> resizerGripNormalFillStyleFor: aResizer [
-	"Return the normal fillStyle for the given resizer.
-	For the moment, answer a transparent colour for no drawing,
-	non transparent to draw as normal."
-	
-	^Color transparent
+
+	^ colorPalette resizerGripNormalFillStyleFor: aResizer
 ]
 
 { #category : #scrollbars }
@@ -5145,10 +5082,8 @@ UITheme2 >> scrollbarNormalButtonFillStyleFor: aScrollbar [
 
 { #category : #'fill-styles - scrollbars' }
 UITheme2 >> scrollbarNormalFillStyleFor: aScrollbar [
-	"Return the normal scrollbar fillStyle for the given scrollbar."
 	
-	^ "(self glamorousBaseColorFor: aScrollbar) muchLighter"
-	Color r: 245 g: 245 b: 245 range: 255
+	^ colorPalette scrollbarNormalFillStyleFor: aScrollbar
 ]
 
 { #category : #'fill-styles - scrollbars' }
@@ -5887,9 +5822,8 @@ UITheme2 >> textFieldNormalBorderStyleFor: aTextField [
 
 { #category : #'fill-styles' }
 UITheme2 >> textFieldNormalFillStyleFor: aTextField [
-	"Return the normal fillStyle for the given text field."
 	
-	^ Color white
+	^ colorPalette textFieldNormalFillStyleFor: aTextField
 ]
 
 { #category : #'border-styles' }
@@ -6134,7 +6068,7 @@ UITheme2 >> windowActiveDropShadowStyle: anObject [
 { #category : #'fill-styles' }
 UITheme2 >> windowActiveFillStyleFor: aWindow [
 	"We do not want the lighting effect when the window goes inactive"
-	^SolidFillStyle color: self class baseColor
+	^SolidFillStyle color: self baseColor
 ]
 
 { #category : #'fill-styles' }
@@ -6226,9 +6160,8 @@ UITheme2 >> windowDiffuseDropShadowOffsetRectangleFor: aSystemWindow [
 
 { #category : #'fill-styles' }
 UITheme2 >> windowEdgeNormalFillStyleFor: anEdgeGrip [
-	"Return the normal window edge fillStyle for the given edge grip."
 	
-	^Color transparent
+	^ colorPalette windowEdgeNormalFillStyleFor: anEdgeGrip
 ]
 
 { #category : #'fill-styles' }

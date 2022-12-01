@@ -40,7 +40,7 @@ DarkThemeColorConfigurator >> basePassiveBackgroundColor [
 	^ Color darkGray
 ]
 
-{ #category : #accessing }
+{ #category : #colors }
 DarkThemeColorConfigurator >> baseSelectionColor [
 
 	^ Color r: 97 g: 163 b: 225 range: 255
@@ -218,6 +218,14 @@ DarkThemeColorConfigurator >> popoverButtonColor [
 DarkThemeColorConfigurator >> scrollbarColor [
 
 	^ self buttonColor
+]
+
+{ #category : #colors }
+DarkThemeColorConfigurator >> scrollbarNormalFillStyleFor: aScrollbar [
+
+	"Return the normal scrollbar fillStyle for the given scrollbar."
+
+	^ SolidFillStyle color: self backgroundColor lighter
 ]
 
 { #category : #colors }

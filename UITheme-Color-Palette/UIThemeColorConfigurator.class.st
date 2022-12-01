@@ -88,6 +88,34 @@ UIThemeColorConfigurator >> buttonColorFor: aButton [
 ]
 
 { #category : #colors }
+UIThemeColorConfigurator >> buttonColouredMiddleColor [
+
+	"Return the middle area colour for a coloured button fillStyle."
+
+	^ Color r: 102 g: 127 b: 168 range: 255
+]
+
+{ #category : #colors }
+UIThemeColorConfigurator >> buttonPlainMiddleColor [
+
+	"Return the middle area colour for a plain button fillStyle."
+	
+	^ Color r: 211 g: 211 b: 211 range: 255
+]
+
+{ #category : #colors }
+UIThemeColorConfigurator >> calypsoFrozenItemColor [
+
+	"For Pharo 6 compatibilit reason it is not separate overrides in concrete theme classes.
+	But this trick still allows override this color on external themes. 
+	Idea to only cover default ones which are white and dark"
+	
+	^ self backgroundColor lightness > 0.3
+		ifTrue: [ Color blue muchDarker ]
+		ifFalse: [ Color cyan ]
+]
+
+{ #category : #colors }
 UIThemeColorConfigurator >> caretColor [
 
 	^ Color blue
@@ -214,6 +242,30 @@ UIThemeColorConfigurator >> ghostTextColor [
 ]
 
 { #category : #colors }
+UIThemeColorConfigurator >> growlBorderColorFor: aGrowlMorph [
+
+	^ Color gray
+]
+
+{ #category : #colors }
+UIThemeColorConfigurator >> growlContentsColorFor: aGrowlMorph [
+
+	^ Color white
+]
+
+{ #category : #'as yet unclassified' }
+UIThemeColorConfigurator >> growlFillColorFor: aGrowlMorph [
+
+	^ Color darkGray alpha: 0.5
+]
+
+{ #category : #colors }
+UIThemeColorConfigurator >> growlLabelColorFor: aGrowlMorph [
+
+	^ Color white twiceDarker
+]
+
+{ #category : #colors }
 UIThemeColorConfigurator >> lessConspicuousColorFrom: aColor [
 
 	^ aColor alphaMixed: 0.5 with: Color white
@@ -312,6 +364,14 @@ UIThemeColorConfigurator >> menuTitleColor [
 ]
 
 { #category : #colors }
+UIThemeColorConfigurator >> modalBackdropColor [
+
+	"This method should probably be moved to Pharo later."
+	
+	^ Color black alpha: 0.2
+]
+
+{ #category : #colors }
 UIThemeColorConfigurator >> mouseOverColor [
 
 	^ self backgroundColor darker darker
@@ -348,6 +408,16 @@ UIThemeColorConfigurator >> progressBarProgressColorFor: anObject [
 ]
 
 { #category : #colors }
+UIThemeColorConfigurator >> resizerGripNormalFillStyleFor: aResizer [
+
+	"Return the normal fillStyle for the given resizer.
+	For the moment, answer a transparent colour for no drawing,
+	non transparent to draw as normal."
+	
+	^ Color transparent
+]
+
+{ #category : #colors }
 UIThemeColorConfigurator >> scrollbarColor [
 
 	^ themeSettings scrollbarColor
@@ -365,6 +435,14 @@ UIThemeColorConfigurator >> scrollbarColorFor: aScrollbar [
 UIThemeColorConfigurator >> scrollbarImageColorFor: aScrollbar [
 
 	^ (self baseScrollbarColorFor: aScrollbar) darker
+]
+
+{ #category : #colors }
+UIThemeColorConfigurator >> scrollbarNormalFillStyleFor: aScrollbar [
+	"Return the normal scrollbar fillStyle for the given scrollbar."
+	
+	^ "(self glamorousBaseColorFor: aScrollbar) muchLighter"
+	Color r: 245 g: 245 b: 245 range: 255
 ]
 
 { #category : #colors }
@@ -501,6 +579,14 @@ UIThemeColorConfigurator >> textEditorNormalFillStyleFor: anObject [
 	^ Color white
 ]
 
+{ #category : #colors }
+UIThemeColorConfigurator >> textFieldNormalFillStyleFor: aTextField [
+
+	"Return the normal fillStyle for the given text field."
+	
+	^ Color white
+]
+
 { #category : #accessing }
 UIThemeColorConfigurator >> themeSettings [
 
@@ -566,6 +652,14 @@ UIThemeColorConfigurator >> windowColor [
 UIThemeColorConfigurator >> windowColorFor: anObject [
 
 	^ themeSettings windowColor
+]
+
+{ #category : #colors }
+UIThemeColorConfigurator >> windowEdgeNormalFillStyleFor: anEdgeGrip [
+
+	"Return the normal window edge fillStyle for the given edge grip."
+	
+	^ Color transparent
 ]
 
 { #category : #colors }
